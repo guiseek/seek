@@ -62,6 +62,44 @@
           }
         }
       }
+    },
+    "peer-client": {
+      "projectType": "library",
+      "root": "libs/peer/client",
+      "sourceRoot": "libs/peer/client/src",
+      "prefix": "peer",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/peer/client/tsconfig.lib.json",
+            "project": "libs/peer/client/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/peer/client/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/peer/client/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/peer/client/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

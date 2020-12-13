@@ -28,6 +28,9 @@
     },
     "peer-signaling": {
       "tags": ["side:server", "type:feature", "scope:peer"]
+    },
+    "peer-client": {
+      "tags": ["side:client", "type:feature", "scope:peer"]
     }
   }
 }

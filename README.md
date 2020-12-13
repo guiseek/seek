@@ -9,6 +9,8 @@ ng generate @nrwl/workspace:library --name=core --directory=peer --importPath=@s
 # signaling
 ng generate @nrwl/nest:library --name=signaling --directory=peer --buildable --importPath=@seek-peer/signaling --publishable --tags=side:server,type:feature,scope:peer --target=es2020
 
+# client
+ng generate @nrwl/angular:library --name=client --style=scss --directory=peer --buildable --importPath=@seek-peer/client --lazy --linter=eslint --prefix=peer --publishable --routing --tags=side:client,type:feature,scope:peer
 
 ```
 This project was generated using [Nx](https://nx.dev).
