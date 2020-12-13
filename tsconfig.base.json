@@ -15,7 +15,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@seek-peer/core": ["libs/peer/core/src/index.ts"],
+      "@seek-peer/signaling": ["libs/peer/signaling/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

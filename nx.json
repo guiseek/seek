@@ -22,5 +22,12 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "peer-core": {
+      "tags": []
+    },
+    "peer-signaling": {
+      "tags": ["side:server", "type:feature", "scope:peer"]
+    }
+  }
 }

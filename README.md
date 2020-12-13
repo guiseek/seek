@@ -1,5 +1,16 @@
 # Seek
 
+
+```sh
+
+# core
+ng generate @nrwl/workspace:library --name=core --directory=peer --importPath=@seek-peer/core
+
+# signaling
+ng generate @nrwl/nest:library --name=signaling --directory=peer --buildable --importPath=@seek-peer/signaling --publishable --tags=side:server,type:feature,scope:peer --target=es2020
+
+
+```
 This project was generated using [Nx](https://nx.dev).
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>

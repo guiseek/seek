@@ -1,7 +1,79 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "peer-core": {
+      "root": "libs/peer/core",
+      "sourceRoot": "libs/peer/core/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/peer/core/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/peer/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/peer/core",
+            "tsConfig": "libs/peer/core/tsconfig.lib.json",
+            "packageJson": "libs/peer/core/package.json",
+            "main": "libs/peer/core/src/index.ts",
+            "assets": ["libs/peer/core/*.md"]
+          }
+        }
+      }
+    },
+    "peer-signaling": {
+      "root": "libs/peer/signaling",
+      "sourceRoot": "libs/peer/signaling/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/peer/signaling/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/peer/signaling/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/peer/signaling",
+            "tsConfig": "libs/peer/signaling/tsconfig.lib.json",
+            "packageJson": "libs/peer/signaling/package.json",
+            "main": "libs/peer/signaling/src/index.ts",
+            "assets": ["libs/peer/signaling/*.md"]
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
   }
 }
