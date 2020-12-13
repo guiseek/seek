@@ -1,1 +1,1 @@
-export * from './lib/peer-signaling.module';
+export * from './lib/peer-signaling.module'

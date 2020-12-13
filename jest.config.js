@@ -4,4 +4,4 @@ module.exports = {
     '<rootDir>/libs/peer/signaling',
     '<rootDir>/libs/peer/client',
   ],
-};
+}
