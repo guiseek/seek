@@ -34,7 +34,7 @@
           "builder": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
-            "command": "npx semantic-release",
+            "command": "npx semantic-release --dry-run",
             "cwd": "libs/peer/core"
           }
         }
@@ -76,7 +76,7 @@
           "builder": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
-            "command": "npx semantic-release",
+            "command": "npx semantic-release --dry-run",
             "cwd": "libs/peer/signaling"
           }
         }
@@ -117,7 +117,7 @@
           "builder": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
-            "command": "npx semantic-release",
+            "command": "npx semantic-release --dry-run",
             "cwd": "libs/peer/client"
           }
         }
