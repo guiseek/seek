@@ -1,1 +1,5 @@
-export * from './lib/peer-core';
+export * from './lib/utilities'
+export * from './lib/immutable.model'
+export * from './lib/peer-client.model'
+export * from './lib/peer-event.enum'
+export * from './lib/peer-transport'
