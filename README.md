@@ -1,6 +1,5 @@
 # Seek
 
-
 ```sh
 
 # core
@@ -12,7 +11,16 @@ ng generate @nrwl/nest:library --name=signaling --directory=peer --buildable --i
 # client
 ng generate @nrwl/angular:library --name=client --style=scss --directory=peer --buildable --importPath=@seek-peer/client --lazy --linter=eslint --prefix=peer --publishable --routing --tags=side:client,type:feature,scope:peer
 
+
+#releases
+ng generate @nrwl/workspace:run-commands --name=release --command='npx semantic-release --dry-run' --project=peer-client --cwd=libs/peer/client
+
+ng generate @nrwl/workspace:run-commands --name=release --command='npx semantic-release --dry-run' --project=peer-core --cwd=libs/peer/core
+
+ng generate @nrwl/workspace:run-commands --name=release --command='npx semantic-release --dry-run' --project=peer-signaling --cwd=libs/peer/signaling
+
 ```
+
 This project was generated using [Nx](https://nx.dev).
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>

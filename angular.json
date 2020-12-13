@@ -27,7 +27,15 @@
             "tsConfig": "libs/peer/core/tsconfig.lib.json",
             "packageJson": "libs/peer/core/package.json",
             "main": "libs/peer/core/src/index.ts",
-            "assets": ["libs/peer/core/*.md"]
+            "assets": ["libs/peer/core/*.md", "libs/peer/core/LICENSE"]
+          }
+        },
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "npx semantic-release --dry-run",
+            "cwd": "libs/peer/core"
           }
         }
       }
@@ -58,7 +66,18 @@
             "tsConfig": "libs/peer/signaling/tsconfig.lib.json",
             "packageJson": "libs/peer/signaling/package.json",
             "main": "libs/peer/signaling/src/index.ts",
-            "assets": ["libs/peer/signaling/*.md"]
+            "assets": [
+              "libs/peer/signaling/*.md",
+              "libs/peer/signaling/LICENSE"
+            ]
+          }
+        },
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "npx semantic-release --dry-run",
+            "cwd": "libs/peer/signaling"
           }
         }
       }
@@ -92,6 +111,14 @@
           "options": {
             "jestConfig": "libs/peer/client/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "npx semantic-release --dry-run",
+            "cwd": "libs/peer/client"
           }
         }
       },
