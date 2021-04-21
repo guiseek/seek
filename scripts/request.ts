@@ -22,16 +22,23 @@ const tasks = new Listr<Ctx>(
     {
       title: 'Lint Workspace & Code',
       task: async (ctx, task) =>
-        task.newListr((parent) => [
+        task.newListr(
+          (parent) => [
+            // {
+            //   title: 'Workspace',
+            //   task: async () => await workspaceLint,
+            // },
+            {
+              title: 'Code',
+              task: async () => await affectedLint,
+            },
+          ],
           {
-            title: 'Workspace',
-            task: async () => await workspaceLint,
-          },
-          {
-            title: 'Code',
-            task: async () => await affectedLint,
-          },
-        ]),
+            /* options */
+            concurrent: false,
+            exitOnError: true,
+          }
+        ),
     },
     {
       title: 'Unit Tests',

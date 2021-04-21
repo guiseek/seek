@@ -18,7 +18,8 @@
     "paths": {
       "@seek-peer/core": ["libs/peer/core/src/index.ts"],
       "@seek-peer/signaling": ["libs/peer/signaling/src/index.ts"],
-      "@seek-peer/client": ["libs/peer/client/src/index.ts"]
+      "@seek-peer/client": ["libs/peer/client/src/index.ts"],
+      "@guiseek/web-core": ["libs/web/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
