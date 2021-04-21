@@ -1,0 +1,43 @@
+.seek-code-editor {
+  height: calc(100vh - 300px);
+  display: block;
+  position: relative;
+  #browser,
+  #editor,
+  #file,
+  #code,
+  #lib,
+  #lang {
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transition: opacity 250ms ease-in-out;
+  }
+  #browser {
+    background-image: url('assets/layers/code-editor/browser.svg');
+    background-position: calc(var(--x, 0) * 1.5px) calc(var(--y, 0) * 1.5px);
+  }
+  #editor {
+    background-image: url('assets/layers/code-editor/editor.svg');
+    background-position: calc(var(--x, 0) * 1.4px) calc(var(--y, 0) * 1.4px);
+  }
+  #file {
+    background-image: url('assets/layers/code-editor/file.svg');
+    background-position: calc(var(--x, 0) * 1.3px) calc(var(--y, 0) * 1.3px);
+  }
+  #code {
+    background-image: url('assets/layers/code-editor/code.svg');
+    background-position: calc(var(--x, 0) * 1.2px) calc(var(--y, 0) * 1.2px);
+  }
+  #lib {
+    background-image: url('assets/layers/code-editor/lib.svg');
+    background-position: calc(var(--x, 0) * 1.1px) calc(var(--y, 0) * 1.1px);
+  }
+  #lang {
+    background-image: url('assets/layers/code-editor/lang.svg');
+    background-position: calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px);
+  }
+}

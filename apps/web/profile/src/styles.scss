@@ -1,0 +1,151 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+/* Typography & Links */
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+h2,
+h3 {
+  // margin-top: 3em;
+  color: grey;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  height: 100%;
+  > header {
+    height: 200px;
+  }
+}
+
+nav.center {
+  margin: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer.center {
+  width: 100%;
+  margin: 60px;
+
+  h3 {
+    font-size: 5rem;
+  }
+}
+
+.skew-text {
+  display: flex;
+  justify-content: center;
+  // margin-top: 50vh;
+  // transform: translateY(-50%);
+  // margin: 250px auto;
+  text-align: center;
+  // border: 1px solid #000;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: rotateX(35deg), translateY(-50%);
+    span {
+      color: #ccc;
+      &:nth-child(odd) {
+        transform: skewY(15deg);
+        // background-color: #f00;
+        // box-shadow: 0 60px 20px rgba(0,0,0,0.1);
+      }
+      &:nth-child(even) {
+        transform: skewY(-15deg);
+        background-color: #f9f9f9;
+        color: #a6a6a6;
+        // box-shadow: 0 60px 20px rgba(0,0,0,0.1);
+      }
+    }
+  }
+
+  > span {
+    display: block;
+    background-color: #fff;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out,
+      background-color 0.3s ease-in-out;
+    box-shadow: 0 40px 50px rgba(0, 0, 0, 0.1);
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+  }
+}
+
+// Now that is interesting
+.underlined {
+  color: black;
+  font-size: 2em;
+  line-height: 1.2;
+  text-decoration: none;
+  background-image: linear-gradient(to right, yellow 0, yellow 100%);
+  background-position: 0 1.2em;
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: background 0.5s;
+
+  &:hover {
+    background-size: 100% 100%;
+  }
+
+  // Example:
+  // <a href="#" class="underlined underlined--thin"> I'm a very long text </a>
+  &--thin {
+    background-image: linear-gradient(to right, black 0, black 100%);
+  }
+
+  // Example:
+  // <a href="#" class="underlined underlined--thick">I'm an other very long highlighted link.</a>
+  &--thick {
+    background-position: 0 -0.1em;
+  }
+
+  // Example:
+  // <a href="#" class="underlined underlined--offset">I'm an other very long link and I'm an artist you know.</a>
+  &--offset {
+    background-position: 0 0.2em;
+    //didn't find another solution than mask the underline shape by a box shadow with the same color than the bg
+    box-shadow: inset 0 -0.5em 0 0 white;
+  }
+
+  // Example:
+  // <a href="#" class="underlined underlined--gradient">PICKLE RIIIICK</a>
+  &--gradient {
+    background-position: 0 -0.1em;
+    background-image: linear-gradient(to right, yellow 0, lightgreen 100%);
+  }
+
+  // Example:
+  // <a href="#" class="underlined underlined--reverse">I'm an other long link and I don't like lorem.</a>
+  &--reverse {
+    background-position: 100% -0.1em;
+    transition: background 1s; //yep, that's a long link
+    background-image: linear-gradient(to right, yellow 0, yellow 100%);
+  }
+}

@@ -35,7 +35,7 @@ module.exports = {
    * para algum sistema bancário: ["contas", "pagamentos"].
    * Para outro aplicativo de viagem: ["reservas", "pesquisar", "perfil"]
    */
-  scopes: ['peer-signaling', 'peer-core', 'peer-client'],
+  scopes: ['web-core', 'peer-signaling', 'peer-core', 'peer-client'],
 
   allowTicketNumber: false,
   isTicketNumberRequired: false,
