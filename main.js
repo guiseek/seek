@@ -1538,7 +1538,7 @@ module.exports = [[module.i, "body > *:first-child {\n  flex: 1;\n  display: fle
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = [[module.i, "seek-gallery {\n  display: none;\n  padding: 1rem;\n}\n\n@supports (display: grid) {\n  seek-gallery {\n    display: block;\n  }\n}\n.grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));\n  grid-auto-rows: 280px;\n  grid-auto-flow: row dense;\n}\n.grid figure {\n  display: flex;\n  position: relative;\n  flex-direction: column;\n  justify-content: flex-end;\n  box-sizing: border-box;\n  background: rgba(2, 2, 2, 0.01);\n  grid-column-start: auto;\n  grid-row-start: auto;\n  border-radius: 6px;\n  overflow: hidden;\n  color: #fff;\n  background-size: cover;\n  background-position: 65% 65%;\n  transition: transform 0.3s ease-in-out;\n}\n.grid figure img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.grid figure:nth-of-type(3n) {\n  grid-column-end: auto;\n}\n@media screen and (min-width: 768px) {\n  .grid figure:nth-of-type(3n) {\n    grid-column: 1/-1;\n    grid-row-end: span 2;\n  }\n}\n.grid figure:nth-of-type(3n) {\n  grid-row-end: span 3;\n}\n.grid figure:nth-of-type(2n) {\n  grid-row-end: span 2;\n}\n.grid figure:after {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  opacity: 0.3;\n  transition: opacity 0.3s ease-in-out, box-shadow 0.9s ease-in-out;\n}\n.grid figure:hover {\n  transform: scale(1.05);\n  box-shadow: -2px 2px 10px 0 rgba(68, 68, 68, 0.4);\n}\n.grid figure:hover:after {\n  opacity: 0;\n}\n.grid figure.medium {\n  grid-row-end: span 2;\n}\n.grid figure.large {\n  grid-row-end: span 3;\n}\n.grid figure.full {\n  grid-column-end: auto;\n}\n@media screen and (min-width: 768px) {\n  .grid figure.full {\n    grid-column: 1/-1;\n    grid-row-end: span 2;\n  }\n}\n.grid figcaption {\n  z-index: 1;\n  padding: 15px;\n  font-size: medium;\n  position: relative;\n  letter-spacing: 1px;\n  text-transform: lowercase;\n  color: rgba(0, 0, 0, 0);\n  transition: background-color 0.3s ease-in-out, color 0.2s ease-in-out;\n  text-align: center;\n}\n.grid figure:hover figcaption {\n  color: rgba(0, 0, 0, 0.8);\n}", '', {"version":3,"sources":["/home/runner/work/seek/seek/apps/web/profile/src/section/gallery/gallery.element.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,aAAA;AACF;;AAMA;EACE;IACE,cAAA;EAHF;AACF;AAMA;EACE,aAAA;EAEA,2DAAA;EACA,qBAAA;EACA,yBAAA;AALF;AAOE;EACE,aAAA;EACA,kBAAA;EACA,sBAAA;EACA,yBAAA;EACA,sBAAA;EACA,+BAAA;EACA,uBAAA;EACA,oBAAA;EACA,kBAAA;EACA,gBAAA;EACA,WAAA;EACA,sBAAA;EACA,4BAAA;EAEA,sCAAA;AANJ;AAQI;EACE,WAAA;EACA,YAAA;EACA,iBAAA;AANN;AAUE;EACE,qBAAA;AARJ;AAWE;EACE;IACE,iBAAA;IACA,oBAAA;EATJ;AACF;AAYE;EACE,oBAAA;AAVJ;AAaE;EACE,oBAAA;AAXJ;AAcE;EACE,WAAA;EACA,kBAAA;EACA,WAAA;EACA,YAAA;EACA,YAAA;EACA,iEAAA;AAZJ;AAeE;EACE,sBAAA;EACA,iDAAA;AAbJ;AAgBE;EACE,UAAA;AAdJ;AAiBE;EACE,oBAAA;AAfJ;AAkBE;EACE,oBAAA;AAhBJ;AAmBE;EACE,qBAAA;AAjBJ;AAoBE;EACE;IACE,iBAAA;IACA,oBAAA;EAlBJ;AACF;AAqBE;EACE,UAAA;EACA,aAAA;EACA,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,yBAAA;EACA,uBAAA;EAEA,qEAAA;EACA,kBAAA;AApBJ;AAuBE;EACE,yBAAA;AArBJ","sourcesContent":["seek-gallery {\n  display: none;\n  padding: 1rem;\n}\n@media screen and (min-width: 768px) {\n  seek-gallery {\n    // padding: 4rem;\n  }\n}\n@supports (display: grid) {\n  seek-gallery {\n    display: block;\n  }\n}\n\n.grid {\n  display: grid;\n  // grid-gap: 20px;\n  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));\n  grid-auto-rows: 280px;\n  grid-auto-flow: row dense;\n\n  figure {\n    display: flex;\n    position: relative;\n    flex-direction: column;\n    justify-content: flex-end;\n    box-sizing: border-box;\n    background: rgba(2, 2, 2, 0.01);\n    grid-column-start: auto;\n    grid-row-start: auto;\n    border-radius: 6px;\n    overflow: hidden;\n    color: #fff;\n    background-size: cover;\n    background-position: 65% 65%;\n    // box-shadow: -2px 2px 10px 0 rgba(68, 68, 68, 0.4);\n    transition: transform 0.3s ease-in-out;\n\n    img {\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n    }\n  }\n\n  figure:nth-of-type(3n) {\n    grid-column-end: auto;\n  }\n\n  @media screen and (min-width: 768px) {\n    figure:nth-of-type(3n) {\n      grid-column: 1 / -1;\n      grid-row-end: span 2;\n    }\n  }\n\n  figure:nth-of-type(3n) {\n    grid-row-end: span 3;\n  }\n\n  figure:nth-of-type(2n) {\n    grid-row-end: span 2;\n  }\n\n  figure:after {\n    content: '';\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    opacity: 0.3;\n    transition: opacity 0.3s ease-in-out, box-shadow 0.9s ease-in-out;\n  }\n\n  figure:hover {\n    transform: scale(1.05);\n    box-shadow: -2px 2px 10px 0 rgba(68, 68, 68, 0.4);\n  }\n\n  figure:hover:after {\n    opacity: 0;\n  }\n\n  figure.medium {\n    grid-row-end: span 2;\n  }\n\n  figure.large {\n    grid-row-end: span 3;\n  }\n\n  figure.full {\n    grid-column-end: auto;\n  }\n\n  @media screen and (min-width: 768px) {\n    figure.full {\n      grid-column: 1 / -1;\n      grid-row-end: span 2;\n    }\n  }\n\n  figcaption {\n    z-index: 1;\n    padding: 15px;\n    font-size: medium;\n    position: relative;\n    letter-spacing: 1px;\n    text-transform: lowercase;\n    color: rgba(0, 0, 0, 0);\n    // background: hsla(0, 0%, 100%, 0.1);\n    transition: background-color 0.3s ease-in-out, color 0.2s ease-in-out;\n    text-align: center;\n  }\n\n  figure:hover figcaption {\n    color: rgba(0, 0, 0, 0.8);\n    // background: hsla(0, 0%, 100%, 0.8);\n  }\n}\n\n// .grid {\n//   $seek-grid-gap: 4rem;\n//   $seek-grid-template-rows: 300px;\n//   $seek-grid-template-columns: 320px;\n\n//   display: grid;\n//   grid-template-columns: repeat(\n//     auto-fill,\n//     minmax($seek-grid-template-columns, 1fr)\n//   );\n\n//   grid-template-rows: repeat(6, $seek-grid-template-rows);\n//   grid-gap: $seek-grid-gap;\n//   grid-auto-flow: dense;\n//   list-style: none;\n\n//   > figure:nth-child(4n) {\n//     grid-column: span 2;\n//     grid-row: span 2;\n//   }\n\n//   > figure:nth-child(8n) {\n//     grid-column: span 3;\n//     grid-row: span 3;\n//   }\n\n//   > figure {\n//     height: 100%;\n//   }\n\n//   > figure > img {\n//     width: 100%;\n//     height: 100%;\n//     border-radius: 6px;\n//     overflow: hidden;\n//     object-fit: cover;\n//   }\n\n//   > figure {\n//     position: relative;\n//     border-radius: 6px;\n//     box-sizing: border-box;\n//     background: rgba(2, 2, 2, 0.01);\n//     box-shadow: -2px 2px 10px 0 rgba(68, 68, 68, 0.4);\n//     transition: transform 0.3s ease-in-out;\n\n//     figcaption {\n//       z-index: 1;\n//       padding: 15px;\n//       font-size: medium;\n//       position: relative;\n//       letter-spacing: 1px;\n//       top: 0px;\n//       color: rgba(0, 0, 0, 0.3);\n//       text-transform: lowercase;\n//       transition: background-color 0.3s ease-in-out, color 0.2s ease-in-out;\n//       text-align: center;\n//     }\n\n//     &:hover figcaption {\n//       color: rgba(0, 0, 0, 0.9);\n//     }\n\n//     &:hover {\n//       transform: scale(1.05);\n//     }\n//   }\n// }\n"],"sourceRoot":""}]]
+module.exports = [[module.i, "seek-gallery {\n  display: none;\n  padding: 1rem;\n}\n\n@supports (display: grid) {\n  seek-gallery {\n    display: block;\n  }\n}\n.grid {\n  display: grid;\n  grid-gap: 20px;\n  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));\n  grid-auto-rows: 280px;\n  grid-auto-flow: row dense;\n}\n.grid figure {\n  display: flex;\n  position: relative;\n  flex-direction: column;\n  justify-content: flex-end;\n  box-sizing: border-box;\n  background: rgba(2, 2, 2, 0.01);\n  grid-column-start: auto;\n  grid-row-start: auto;\n  border-radius: 6px;\n  overflow: hidden;\n  color: #fff;\n  background-size: cover;\n  background-position: 65% 65%;\n  transition: transform 0.3s ease-in-out;\n}\n.grid figure img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.grid figure:nth-of-type(3n) {\n  grid-column-end: auto;\n}\n@media screen and (min-width: 768px) {\n  .grid figure:nth-of-type(3n) {\n    grid-column: 1/-1;\n    grid-row-end: span 2;\n  }\n}\n.grid figure:nth-of-type(3n) {\n  grid-row-end: span 3;\n}\n.grid figure:nth-of-type(2n) {\n  grid-row-end: span 2;\n}\n.grid figure:after {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  opacity: 0.3;\n  transition: opacity 0.3s ease-in-out, box-shadow 0.9s ease-in-out;\n}\n.grid figure:hover {\n  transform: scale(1.05);\n  box-shadow: -2px 2px 10px 0 rgba(68, 68, 68, 0.4);\n}\n.grid figure:hover:after {\n  opacity: 0;\n}\n.grid figure.medium {\n  grid-row-end: span 2;\n}\n.grid figure.large {\n  grid-row-end: span 3;\n}\n.grid figure.full {\n  grid-column-end: auto;\n}\n.grid figure.top img {\n  object-position: top;\n}\n.grid figure.bottom img {\n  object-position: bottom;\n}\n.grid figure.left img {\n  object-position: left;\n}\n.grid figure.right img {\n  object-position: right;\n}\n@media screen and (min-width: 768px) {\n  .grid figure.full {\n    grid-column: 1/-1;\n    grid-row-end: span 2;\n  }\n}\n.grid figcaption {\n  z-index: 1;\n  padding: 15px;\n  font-size: medium;\n  position: relative;\n  letter-spacing: 1px;\n  color: rgba(0, 0, 0, 0);\n  transition: background-color 0.3s ease-in-out, color 0.2s ease-in-out;\n  text-align: center;\n}\n.grid figure:hover figcaption {\n  color: rgba(0, 0, 0, 0.8);\n}", '', {"version":3,"sources":["/home/runner/work/seek/seek/apps/web/profile/src/section/gallery/gallery.element.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,aAAA;AACF;;AAEA;EACE;IACE,cAAA;EACF;AACF;AAEA;EACE,aAAA;EACA,cAAA;EACA,2DAAA;EACA,qBAAA;EACA,yBAAA;AAAF;AAEE;EACE,aAAA;EACA,kBAAA;EACA,sBAAA;EACA,yBAAA;EACA,sBAAA;EACA,+BAAA;EACA,uBAAA;EACA,oBAAA;EACA,kBAAA;EACA,gBAAA;EACA,WAAA;EACA,sBAAA;EACA,4BAAA;EAEA,sCAAA;AADJ;AAGI;EACE,WAAA;EACA,YAAA;EACA,iBAAA;AADN;AAKE;EACE,qBAAA;AAHJ;AAME;EACE;IACE,iBAAA;IACA,oBAAA;EAJJ;AACF;AAOE;EACE,oBAAA;AALJ;AAQE;EACE,oBAAA;AANJ;AASE;EACE,WAAA;EACA,kBAAA;EACA,WAAA;EACA,YAAA;EACA,YAAA;EACA,iEAAA;AAPJ;AAUE;EACE,sBAAA;EACA,iDAAA;AARJ;AAWE;EACE,UAAA;AATJ;AAYE;EACE,oBAAA;AAVJ;AAaE;EACE,oBAAA;AAXJ;AAcE;EACE,qBAAA;AAZJ;AAeE;EACE,oBAAA;AAbJ;AAeE;EACE,uBAAA;AAbJ;AAgBE;EACE,qBAAA;AAdJ;AAiBE;EACE,sBAAA;AAfJ;AAkBE;EACE;IACE,iBAAA;IACA,oBAAA;EAhBJ;AACF;AAmBE;EACE,UAAA;EACA,aAAA;EACA,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,uBAAA;EAEA,qEAAA;EACA,kBAAA;AAlBJ;AAqBE;EACE,yBAAA;AAnBJ","sourcesContent":["seek-gallery {\n  display: none;\n  padding: 1rem;\n}\n\n@supports (display: grid) {\n  seek-gallery {\n    display: block;\n  }\n}\n\n.grid {\n  display: grid;\n  grid-gap: 20px;\n  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));\n  grid-auto-rows: 280px;\n  grid-auto-flow: row dense;\n\n  figure {\n    display: flex;\n    position: relative;\n    flex-direction: column;\n    justify-content: flex-end;\n    box-sizing: border-box;\n    background: rgba(2, 2, 2, 0.01);\n    grid-column-start: auto;\n    grid-row-start: auto;\n    border-radius: 6px;\n    overflow: hidden;\n    color: #fff;\n    background-size: cover;\n    background-position: 65% 65%;\n    // box-shadow: -2px 2px 10px 0 rgba(68, 68, 68, 0.4);\n    transition: transform 0.3s ease-in-out;\n\n    img {\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n    }\n  }\n\n  figure:nth-of-type(3n) {\n    grid-column-end: auto;\n  }\n\n  @media screen and (min-width: 768px) {\n    figure:nth-of-type(3n) {\n      grid-column: 1 / -1;\n      grid-row-end: span 2;\n    }\n  }\n\n  figure:nth-of-type(3n) {\n    grid-row-end: span 3;\n  }\n\n  figure:nth-of-type(2n) {\n    grid-row-end: span 2;\n  }\n\n  figure:after {\n    content: '';\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    opacity: 0.3;\n    transition: opacity 0.3s ease-in-out, box-shadow 0.9s ease-in-out;\n  }\n\n  figure:hover {\n    transform: scale(1.05);\n    box-shadow: -2px 2px 10px 0 rgba(68, 68, 68, 0.4);\n  }\n\n  figure:hover:after {\n    opacity: 0;\n  }\n\n  figure.medium {\n    grid-row-end: span 2;\n  }\n\n  figure.large {\n    grid-row-end: span 3;\n  }\n\n  figure.full {\n    grid-column-end: auto;\n  }\n\n  figure.top img {\n    object-position: top;\n  }\n  figure.bottom img {\n    object-position: bottom;\n  }\n\n  figure.left img {\n    object-position: left;\n  }\n\n  figure.right img {\n    object-position: right;\n  }\n\n  @media screen and (min-width: 768px) {\n    figure.full {\n      grid-column: 1 / -1;\n      grid-row-end: span 2;\n    }\n  }\n\n  figcaption {\n    z-index: 1;\n    padding: 15px;\n    font-size: medium;\n    position: relative;\n    letter-spacing: 1px;\n    color: rgba(0, 0, 0, 0);\n    // background: hsla(0, 0%, 100%, 0.1);\n    transition: background-color 0.3s ease-in-out, color 0.2s ease-in-out;\n    text-align: center;\n  }\n\n  figure:hover figcaption {\n    color: rgba(0, 0, 0, 0.8);\n  }\n}\n"],"sourceRoot":""}]]
 
 /***/ }),
 
@@ -1549,7 +1549,7 @@ module.exports = [[module.i, "seek-gallery {\n  display: none;\n  padding: 1rem;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = [[module.i, "seek-hero-banner {\n  flex: 1;\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  align-items: center;\n  position: relative;\n  background-image: url(\"assets/images/relational.svg\");\n  background-position: calc(var(--x, 0) * -1px) calc(var(--y, 0) * -1px);\n  background-size: contain;\n}\nseek-hero-banner .seek-front-end,\nseek-hero-banner .seek-code-editor {\n  width: 100vw;\n  height: calc(100vh - 140px);\n}\nseek-hero-banner > header {\n  width: 100vw;\n  height: 220px;\n  display: flex;\n  position: absolute;\n  bottom: 20px;\n  flex-direction: column;\n  align-items: center;\n}\n\n@media screen and (max-width: 768px) {\n  seek-hero-banner {\n    position: relative;\n  }\n  seek-hero-banner > header {\n    margin-top: calc(100vh - 130px);\n  }\n  seek-hero-banner::before {\n    content: \" \";\n    position: absolute;\n    width: 210px;\n    top: 10px;\n    right: 10px;\n    height: 300px;\n    background-image: url(assets/layers/code-editor.svg);\n    background-size: contain;\n    background-repeat: no-repeat;\n  }\n  seek-hero-banner::after {\n    content: \" \";\n    position: absolute;\n    width: 220px;\n    height: 212.26px;\n    left: 10px;\n    top: 214px;\n    background-image: url(assets/layers/front-end.svg);\n    background-size: contain;\n    background-repeat: no-repeat;\n  }\n  seek-hero-banner .seek-front-end,\nseek-hero-banner .seek-code-editor {\n    height: calc(100vh - 80px);\n    visibility: hidden;\n  }\n}\n@media screen and (min-width: 768px) {\n  seek-hero-banner .seek-front-end,\nseek-hero-banner .seek-code-editor {\n    opacity: 1;\n  }\n}\n@supports (display: grid) {\n  seek-hero-banner .seek-front-end,\nseek-hero-banner .seek-code-editor {\n    opacity: 1;\n  }\n}", '', {"version":3,"sources":["/home/runner/work/seek/seek/apps/web/profile/src/section/hero-banner/hero-banner.element.scss"],"names":[],"mappings":"AAAA;EACE,OAAA;EACA,YAAA;EACA,aAAA;EACA,aAAA;EACA,mBAAA;EACA,6BAAA;EACA,mBAAA;EACA,kBAAA;EAEA,qDAAA;EACA,sEAAA;EACA,wBAAA;AAAF;AAEE;;EAEE,YAAA;EACA,2BAAA;AAAJ;AAEE;EACE,YAAA;EACA,aAAA;EACA,aAAA;EACA,kBAAA;EACA,YAAA;EACA,sBAAA;EACA,mBAAA;AAAJ;;AAIA;EACE;IACE,kBAAA;EADF;EAEE;IACE,+BAAA;EAAJ;EAEE;IACE,YAAA;IACA,kBAAA;IACA,YAAA;IACA,SAAA;IACA,WAAA;IACA,aAAA;IACA,oDAAA;IACA,wBAAA;IACA,4BAAA;EAAJ;EAEE;IACE,YAAA;IACA,kBAAA;IACA,YAAA;IACA,gBAAA;IACA,UAAA;IACA,UAAA;IACA,kDAAA;IACA,wBAAA;IACA,4BAAA;EAAJ;EAEE;;IAEE,0BAAA;IACA,kBAAA;EAAJ;AACF;AAGA;EAEI;;IAEE,UAAA;EAFJ;AACF;AAKA;EAEI;;IAEE,UAAA;EAJJ;AACF","sourcesContent":["seek-hero-banner {\n  flex: 1;\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  align-items: center;\n  position: relative;\n\n  background-image: url('assets/images/relational.svg');\n  background-position: calc(var(--x, 0) * -1px) calc(var(--y, 0) * -1px);\n  background-size: contain;\n\n  .seek-front-end,\n  .seek-code-editor {\n    width: 100vw;\n    height: calc(100vh - 140px);\n  }\n  > header {\n    width: 100vw;\n    height: 220px;\n    display: flex;\n    position: absolute;\n    bottom: 20px;\n    flex-direction: column;\n    align-items: center;\n  }\n}\n\n@media screen and (max-width: 768px) {\n  seek-hero-banner {\n    position: relative;\n    > header {\n      margin-top: calc(100vh - 130px);\n    }\n    &::before {\n      content: ' ';\n      position: absolute;\n      width: 210px;\n      top: 10px;\n      right: 10px;\n      height: 300px;\n      background-image: url(assets/layers/code-editor.svg);\n      background-size: contain;\n      background-repeat: no-repeat;\n    }\n    &::after {\n      content: ' ';\n      position: absolute;\n      width: 220px;\n      height: 212.26px;\n      left: 10px;\n      top: 214px;\n      background-image: url(assets/layers/front-end.svg);\n      background-size: contain;\n      background-repeat: no-repeat;\n    }\n    .seek-front-end,\n    .seek-code-editor {\n      height: calc(100vh - 80px);\n      visibility: hidden;\n    }\n  }\n}\n@media screen and (min-width: 768px) {\n  seek-hero-banner {\n    .seek-front-end,\n    .seek-code-editor {\n      opacity: 1;\n    }\n  }\n}\n@supports (display: grid) {\n  seek-hero-banner {\n    .seek-front-end,\n    .seek-code-editor {\n      opacity: 1;\n    }\n  }\n}\n"],"sourceRoot":""}]]
+module.exports = [[module.i, "seek-hero-banner {\n  flex: 1;\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  align-items: center;\n  position: relative;\n  background-image: url(\"assets/images/relational.svg\");\n  background-position: calc(var(--x, 0) * -1px) calc(var(--y, 0) * -1px);\n  background-size: contain;\n}\nseek-hero-banner .seek-front-end,\nseek-hero-banner .seek-code-editor {\n  width: 100vw;\n  height: calc(100vh - 140px);\n}\nseek-hero-banner > header {\n  width: 100vw;\n  height: 220px;\n  display: flex;\n  position: absolute;\n  bottom: 0px;\n  flex-direction: column;\n  align-items: center;\n  background: white;\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, white 100%);\n}\n\n@media screen and (max-width: 768px) {\n  seek-hero-banner {\n    position: relative;\n  }\n  seek-hero-banner > header {\n    margin-top: calc(100vh - 130px);\n  }\n  seek-hero-banner::before {\n    content: \" \";\n    position: absolute;\n    width: 210px;\n    top: 10px;\n    right: 10px;\n    height: 300px;\n    background-image: url(assets/layers/code-editor.svg);\n    background-size: contain;\n    background-repeat: no-repeat;\n  }\n  seek-hero-banner::after {\n    content: \" \";\n    position: absolute;\n    width: 220px;\n    height: 212.26px;\n    left: 10px;\n    top: 214px;\n    background-image: url(assets/layers/front-end.svg);\n    background-size: contain;\n    background-repeat: no-repeat;\n  }\n  seek-hero-banner .seek-front-end,\nseek-hero-banner .seek-code-editor {\n    height: calc(100vh - 80px);\n    visibility: hidden;\n  }\n}", '', {"version":3,"sources":["/home/runner/work/seek/seek/apps/web/profile/src/section/hero-banner/hero-banner.element.scss"],"names":[],"mappings":"AAAA;EACE,OAAA;EACA,YAAA;EACA,aAAA;EACA,aAAA;EACA,mBAAA;EACA,6BAAA;EACA,mBAAA;EACA,kBAAA;EAEA,qDAAA;EACA,sEAAA;EACA,wBAAA;AAAF;AAEE;;EAEE,YAAA;EACA,2BAAA;AAAJ;AAEE;EACE,YAAA;EACA,aAAA;EACA,aAAA;EACA,kBAAA;EACA,WAAA;EACA,sBAAA;EACA,mBAAA;EACA,iBAAA;EACA,2EAAA;AAAJ;;AAQA;EACE;IACE,kBAAA;EALF;EAME;IACE,+BAAA;EAJJ;EAME;IACE,YAAA;IACA,kBAAA;IACA,YAAA;IACA,SAAA;IACA,WAAA;IACA,aAAA;IACA,oDAAA;IACA,wBAAA;IACA,4BAAA;EAJJ;EAME;IACE,YAAA;IACA,kBAAA;IACA,YAAA;IACA,gBAAA;IACA,UAAA;IACA,UAAA;IACA,kDAAA;IACA,wBAAA;IACA,4BAAA;EAJJ;EAME;;IAEE,0BAAA;IACA,kBAAA;EAJJ;AACF","sourcesContent":["seek-hero-banner {\n  flex: 1;\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  align-items: center;\n  position: relative;\n\n  background-image: url('assets/images/relational.svg');\n  background-position: calc(var(--x, 0) * -1px) calc(var(--y, 0) * -1px);\n  background-size: contain;\n\n  .seek-front-end,\n  .seek-code-editor {\n    width: 100vw;\n    height: calc(100vh - 140px);\n  }\n  > header {\n    width: 100vw;\n    height: 220px;\n    display: flex;\n    position: absolute;\n    bottom: 0px;\n    flex-direction: column;\n    align-items: center;\n    background: rgb(255, 255, 255);\n    background: linear-gradient(\n      180deg,\n      rgba(255, 255, 255, 0) 50%,\n      rgba(255, 255, 255, 1) 100%\n    );\n  }\n}\n\n@media screen and (max-width: 768px) {\n  seek-hero-banner {\n    position: relative;\n    > header {\n      margin-top: calc(100vh - 130px);\n    }\n    &::before {\n      content: ' ';\n      position: absolute;\n      width: 210px;\n      top: 10px;\n      right: 10px;\n      height: 300px;\n      background-image: url(assets/layers/code-editor.svg);\n      background-size: contain;\n      background-repeat: no-repeat;\n    }\n    &::after {\n      content: ' ';\n      position: absolute;\n      width: 220px;\n      height: 212.26px;\n      left: 10px;\n      top: 214px;\n      background-image: url(assets/layers/front-end.svg);\n      background-size: contain;\n      background-repeat: no-repeat;\n    }\n    .seek-front-end,\n    .seek-code-editor {\n      height: calc(100vh - 80px);\n      visibility: hidden;\n    }\n  }\n}\n"],"sourceRoot":""}]]
 
 /***/ }),
 
@@ -1564,17 +1564,6 @@ module.exports = [[module.i, ".seek-code-editor {\n  height: calc(100vh - 300px)
 
 /***/ }),
 
-/***/ "../../../../node_modules/@nrwl/web/src/utils/third-party/cli-files/plugins/raw-css-loader.js!../../../../node_modules/postcss-loader/dist/cjs.js?!../../../../node_modules/@nrwl/web/node_modules/sass-loader/dist/cjs.js?!./shared/font-flame/font-flame.element.scss":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** /home/runner/work/seek/seek/node_modules/@nrwl/web/src/utils/third-party/cli-files/plugins/raw-css-loader.js!/home/runner/work/seek/seek/node_modules/postcss-loader/dist/cjs.js??ref--5-oneOf-5-2!/home/runner/work/seek/seek/node_modules/@nrwl/web/node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-5-3!./shared/font-flame/font-flame.element.scss ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = [[module.i, "@import url(https://fonts.googleapis.com/css?family=Akronim);\n.fire {\n  margin: 50px auto;\n  width: 80%;\n  max-width: 1000px;\n  height: 200px;\n  background-position: center center;\n  background-size: 1000px 200px;\n  border-radius: 10px;\n  font-family: \"Akronim\";\n  overflow: hidden;\n  text-align: center;\n  vertical-align: middle;\n}\n\n.fire:before {\n  content: \"\";\n  display: inline-block;\n  height: 100%;\n  vertical-align: middle;\n}\n\n.blazing {\n  display: inline-block;\n  margin: 0;\n  color: #ff7300;\n  font-size: 100px;\n  line-height: 50px;\n  min-width: 50px;\n  outline: none;\n  vertical-align: middle;\n  text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange, 4px -5px 6px yellow, -4px -10px 10px yellow, 0 -10px 30px yellow;\n  animation: 2s blazing infinite alternate linear;\n}\n\n@keyframes blazing {\n  0% {\n    text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange, 0 0 0 yellow, 0 0 5px yellow, -2px -5px 5px yellow, 4px -10px 10px yellow;\n  }\n  25% {\n    text-shadow: 0 3px 20px red, 0 0 30px red, 0 0 20px orange, 0 0 5px yellow, -2px -5px 5px yellow, 3px -10px 10px yellow, -4px -15px 20px yellow;\n  }\n  50% {\n    text-shadow: 0 3px 20px red, 0 0 20px red, 0 -5px 10px orange, -2px -5px 5px yellow, 3px -10px 10px yellow, -4px -15px 20px yellow, 2px -20px 30px rgba(255, 255, 0, 0.5);\n  }\n  75% {\n    text-shadow: 0 3px 20px red, 0 0 20px red, 0 -5px 10px orange, 3px -5px 5px yellow, -4px -10px 10px yellow, 2px -20px 30px rgba(255, 255, 0, 0.5), 0px -25px 40px rgba(255, 255, 0, 0);\n  }\n  100% {\n    text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange, 0 0 0 yellow, 0 0 5px yellow, -2px -5px 5px yellow, 4px -10px 10px yellow;\n  }\n}", '', {"version":3,"sources":["/home/runner/work/seek/seek/apps/web/profile/src/shared/font-flame/font-flame.element.scss"],"names":[],"mappings":"AAAQ,4DAAA;AAMR;EACE,iBAAA;EACA,UAAA;EACA,iBAAA;EACA,aAAA;EAEA,kCAAA;EACA,6BAAA;EACA,mBAAA;EACA,sBAAA;EACA,gBAAA;EACA,kBAAA;EACA,sBAAA;AALF;;AAOA;EACE,WAAA;EACA,qBAAA;EACA,YAAA;EACA,sBAAA;AAJF;;AAOA;EACE,qBAAA;EACA,SAAA;EAEA,cAAA;EACA,gBAAA;EACA,iBAAA;EACA,eAAA;EACA,aAAA;EACA,sBAAA;EAEA,4HAAA;EAEA,+CAAA;AAPF;;AAUA;EACE;IACE,qIAAA;EAPF;EAUA;IACE,+IAAA;EARF;EAWA;IACE,yKAAA;EATF;EAaA;IACE,sLAAA;EAXF;EAeA;IACE,qIAAA;EAbF;AACF","sourcesContent":["@import url(https://fonts.googleapis.com/css?family=Akronim);\n\n// body {\n//     background: #ca8;\n// }\n\n.fire {\n  margin: 50px auto;\n  width: 80%;\n  max-width: 1000px;\n  height: 200px;\n\n  background-position: center center;\n  background-size: 1000px 200px;\n  border-radius: 10px;\n  font-family: 'Akronim';\n  overflow: hidden;\n  text-align: center;\n  vertical-align: middle;\n}\n.fire:before {\n  content: '';\n  display: inline-block;\n  height: 100%;\n  vertical-align: middle;\n}\n\n.blazing {\n  display: inline-block;\n  margin: 0;\n\n  color: rgb(255, 115, 0);\n  font-size: 100px;\n  line-height: 50px;\n  min-width: 50px;\n  outline: none;\n  vertical-align: middle;\n\n  text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange,\n    4px -5px 6px yellow, -4px -10px 10px yellow, 0 -10px 30px yellow;\n  animation: 2s blazing infinite alternate linear;\n}\n\n@keyframes blazing {\n  0% {\n    text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange, 0 0 0 yellow,\n      0 0 5px yellow, -2px -5px 5px yellow, 4px -10px 10px yellow;\n  }\n  25% {\n    text-shadow: 0 3px 20px red, 0 0 30px red, 0 0 20px orange, 0 0 5px yellow,\n      -2px -5px 5px yellow, 3px -10px 10px yellow, -4px -15px 20px yellow;\n  }\n  50% {\n    text-shadow: 0 3px 20px red, 0 0 20px red, 0 -5px 10px orange,\n      -2px -5px 5px yellow, 3px -10px 10px yellow, -4px -15px 20px yellow,\n      2px -20px 30px rgba(255, 255, 0, 0.5);\n  }\n  75% {\n    text-shadow: 0 3px 20px red, 0 0 20px red, 0 -5px 10px orange,\n      3px -5px 5px yellow, -4px -10px 10px yellow,\n      2px -20px 30px rgba(255, 255, 0, 0.5), 0px -25px 40px rgba(255, 255, 0, 0);\n  }\n  100% {\n    text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange, 0 0 0 yellow,\n      0 0 5px yellow, -2px -5px 5px yellow, 4px -10px 10px yellow;\n  }\n}\n"],"sourceRoot":""}]]
-
-/***/ }),
-
 /***/ "../../../../node_modules/@nrwl/web/src/utils/third-party/cli-files/plugins/raw-css-loader.js!../../../../node_modules/postcss-loader/dist/cjs.js?!../../../../node_modules/@nrwl/web/node_modules/sass-loader/dist/cjs.js?!./shared/front-end/front-end.element.scss":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** /home/runner/work/seek/seek/node_modules/@nrwl/web/src/utils/third-party/cli-files/plugins/raw-css-loader.js!/home/runner/work/seek/seek/node_modules/postcss-loader/dist/cjs.js??ref--5-oneOf-5-2!/home/runner/work/seek/seek/node_modules/@nrwl/web/node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-5-3!./shared/front-end/front-end.element.scss ***!
@@ -1583,17 +1572,6 @@ module.exports = [[module.i, "@import url(https://fonts.googleapis.com/css?famil
 /***/ (function(module, exports) {
 
 module.exports = [[module.i, ".seek-front-end {\n  width: 80%;\n  height: auto;\n  display: block;\n  object-fit: cover;\n  position: relative;\n}\n.seek-front-end #browser,\n.seek-front-end #pages,\n.seek-front-end #templates,\n.seek-front-end #organisms,\n.seek-front-end #molecules,\n.seek-front-end #atoms {\n  content: \" \";\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  background-size: 100%;\n  background-repeat: no-repeat;\n  transition: opacity 250ms ease-in-out;\n}\n.seek-front-end #browser {\n  background-image: url(\"assets/layers/front-end/browser.svg\");\n  background-position: calc(var(--x, 0) * 1.5px) calc(var(--y, 0) * 1.5px);\n}\n.seek-front-end #pages {\n  background-image: url(\"assets/layers/front-end/pages.svg\");\n  background-position: calc(var(--x, 0) * 1.4px) calc(var(--y, 0) * 1.4px);\n}\n.seek-front-end #templates {\n  background-image: url(\"assets/layers/front-end/templates.svg\");\n  background-position: calc(var(--x, 0) * 1.3px) calc(var(--y, 0) * 1.3px);\n}\n.seek-front-end #organisms {\n  background-image: url(\"assets/layers/front-end/organisms.svg\");\n  background-position: calc(var(--x, 0) * 1.2px) calc(var(--y, 0) * 1.2px);\n}\n.seek-front-end #molecules {\n  background-image: url(\"assets/layers/front-end/molecules.svg\");\n  background-position: calc(var(--x, 0) * 1.1px) calc(var(--y, 0) * 1.1px);\n}\n.seek-front-end #atoms {\n  background-image: url(\"assets/layers/front-end/atoms.svg\");\n  background-position: calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px);\n}", '', {"version":3,"sources":["/home/runner/work/seek/seek/apps/web/profile/src/shared/front-end/front-end.element.scss"],"names":[],"mappings":"AAAA;EACE,UAAA;EACA,YAAA;EACA,cAAA;EACA,iBAAA;EACA,kBAAA;AACF;AAAE;;;;;;EAME,YAAA;EACA,WAAA;EACA,YAAA;EACA,kBAAA;EACA,qBAAA;EACA,4BAAA;EACA,qCAAA;AAEJ;AAAE;EACE,4DAAA;EACA,wEAAA;AAEJ;AAAE;EACE,0DAAA;EACA,wEAAA;AAEJ;AAAE;EACE,8DAAA;EACA,wEAAA;AAEJ;AAAE;EACE,8DAAA;EACA,wEAAA;AAEJ;AAAE;EACE,8DAAA;EACA,wEAAA;AAEJ;AAAE;EACE,0DAAA;EACA,oEAAA;AAEJ","sourcesContent":[".seek-front-end {\n  width: 80%;\n  height: auto;\n  display: block;\n  object-fit: cover;\n  position: relative;\n  #browser,\n  #pages,\n  #templates,\n  #organisms,\n  #molecules,\n  #atoms {\n    content: ' ';\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    background-size: 100%;\n    background-repeat: no-repeat;\n    transition: opacity 250ms ease-in-out;\n  }\n  #browser {\n    background-image: url('assets/layers/front-end/browser.svg');\n    background-position: calc(var(--x, 0) * 1.5px) calc(var(--y, 0) * 1.5px);\n  }\n  #pages {\n    background-image: url('assets/layers/front-end/pages.svg');\n    background-position: calc(var(--x, 0) * 1.4px) calc(var(--y, 0) * 1.4px);\n  }\n  #templates {\n    background-image: url('assets/layers/front-end/templates.svg');\n    background-position: calc(var(--x, 0) * 1.3px) calc(var(--y, 0) * 1.3px);\n  }\n  #organisms {\n    background-image: url('assets/layers/front-end/organisms.svg');\n    background-position: calc(var(--x, 0) * 1.2px) calc(var(--y, 0) * 1.2px);\n  }\n  #molecules {\n    background-image: url('assets/layers/front-end/molecules.svg');\n    background-position: calc(var(--x, 0) * 1.1px) calc(var(--y, 0) * 1.1px);\n  }\n  #atoms {\n    background-image: url('assets/layers/front-end/atoms.svg');\n    background-position: calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px);\n  }\n}\n"],"sourceRoot":""}]]
-
-/***/ }),
-
-/***/ "../../../../node_modules/@nrwl/web/src/utils/third-party/cli-files/plugins/raw-css-loader.js!../../../../node_modules/postcss-loader/dist/cjs.js?!../../../../node_modules/@nrwl/web/node_modules/sass-loader/dist/cjs.js?!./shared/stairs/stairs.element.scss":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** /home/runner/work/seek/seek/node_modules/@nrwl/web/src/utils/third-party/cli-files/plugins/raw-css-loader.js!/home/runner/work/seek/seek/node_modules/postcss-loader/dist/cjs.js??ref--5-oneOf-5-2!/home/runner/work/seek/seek/node_modules/@nrwl/web/node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-5-3!./shared/stairs/stairs.element.scss ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = [[module.i, "/*\n** Change this if you need to modify\n** the amount of lines displayed\n*/\n/*\n** Leave these unless you want\n** to open a whole can of worms\n*/\n/*\n** Apply styles to the parent element\n*/\n.words {\n  margin: 0 auto;\n  padding: 80px 0;\n  font-family: \"Source Sans Pro\", Helvetica, Arial, sans-serif;\n  font-size: 68px;\n  font-weight: 900;\n  letter-spacing: -2px;\n  text-transform: uppercase;\n  transform: translate3d(0, 0, 0);\n  font-kerning: normal;\n  -webkit-font-smoothing: antialiased;\n  -webkit-text-size-adjust: 100%;\n}\n\n/*\n** Apply common styles to each line of text\n*/\n.words-line {\n  height: 50px;\n  overflow: hidden;\n  position: relative;\n}\n.words-line:nth-child(odd) {\n  transform: skew(60deg, -30deg) scaleY(0.66667);\n}\n.words-line:nth-child(even) {\n  transform: skew(0deg, -30deg) scaleY(1.33333);\n}\n.words-line:nth-child(1) {\n  left: 29px;\n}\n.words-line:nth-child(2) {\n  left: 58px;\n}\n.words-line:nth-child(3) {\n  left: 87px;\n}\n.words-line:nth-child(4) {\n  left: 116px;\n}\n.words-line:nth-child(5) {\n  left: 145px;\n}\n.words-line:nth-child(6) {\n  left: 174px;\n}\n.words-line:nth-child(7) {\n  left: 203px;\n}\n\n/*\n** Fine-grained text styles\n*/\np {\n  height: 50px;\n  line-height: 45px;\n  padding: 0 10px;\n  transition: all 0.4s ease-in-out;\n  transform: translate3d(0, 0, 0);\n  vertical-align: top;\n  white-space: nowrap;\n}\n\n/*\n** The hover interaction\n*/\n.words:hover p {\n  transform: translate3d(0, -50px, 0);\n}", '', {"version":3,"sources":["/home/runner/work/seek/seek/apps/web/profile/src/shared/stairs/stairs.element.scss"],"names":[],"mappings":"AAAA;;;CAAA;AAMA;;;CAAA;AAQA;;CAAA;AAGA;EACE,cAAA;EACA,eAAA;EACA,4DAAA;EACA,eAAA;EACA,gBAAA;EACA,oBAAA;EACA,yBAAA;EAEA,+BAAA;EACA,oBAAA;EACA,mCAAA;EACA,8BAAA;AANF;;AASA;;CAAA;AAGA;EACE,YAzBY;EA0BZ,gBAAA;EACA,kBAAA;AANF;AASE;EACE,8CAAA;AAPJ;AASE;EACE,6CAAA;AAPJ;AAYI;EACE,UAAA;AAVN;AASI;EACE,UAAA;AAPN;AAMI;EACE,UAAA;AAJN;AAGI;EACE,WAAA;AADN;AAAI;EACE,WAAA;AAEN;AAHI;EACE,WAAA;AAKN;AANI;EACE,WAAA;AAQN;;AAHA;;CAAA;AAGA;EACE,YAjDY;EAkDZ,iBAjDY;EAkDZ,eAAA;EACA,gCAAA;EACA,+BAAA;EACA,mBAAA;EACA,mBAAA;AAMF;;AAHA;;CAAA;AAIE;EACE,mCAAA;AAKJ","sourcesContent":["/*\n** Change this if you need to modify\n** the amount of lines displayed\n*/\n$total-lines: 6;\n\n/*\n** Leave these unless you want\n** to open a whole can of worms\n*/\n$left-offset: 29px;\n$clip-height: 50px;\n$line-height: $clip-height - 5px;\n\n/*\n** Apply styles to the parent element\n*/\n.words {\n  margin: 0 auto;\n  padding: 80px 0;\n  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;\n  font-size: 68px;\n  font-weight: 900;\n  letter-spacing: -2px;\n  text-transform: uppercase;\n  // Sort out nasty text fuzz\n  transform: translate3d(0, 0, 0);\n  font-kerning: normal;\n  -webkit-font-smoothing: antialiased;\n  -webkit-text-size-adjust: 100%;\n}\n\n/*\n** Apply common styles to each line of text\n*/\n.words-line {\n  height: $clip-height;\n  overflow: hidden;\n  position: relative;\n\n  // Change the perspective of each alternating line\n  &:nth-child(odd) {\n    transform: skew(60deg, -30deg) scaleY(0.66667);\n  }\n  &:nth-child(even) {\n    transform: skew(0deg, -30deg) scaleY(1.33333);\n  }\n\n  // Loop over the total lines and apply a left offset\n  @for $i from 1 through $total-lines + 1 {\n    &:nth-child(#{$i}) {\n      left: $left-offset * $i;\n    }\n  }\n}\n\n/*\n** Fine-grained text styles\n*/\np {\n  height: $clip-height;\n  line-height: $line-height;\n  padding: 0 10px;\n  transition: all 0.4s ease-in-out;\n  transform: translate3d(0, 0, 0);\n  vertical-align: top;\n  white-space: nowrap;\n}\n\n/*\n** The hover interaction\n*/\n.words:hover {\n  p {\n    transform: translate3d(0, -($clip-height), 0);\n  }\n}\n"],"sourceRoot":""}]]
 
 /***/ }),
 
@@ -4392,34 +4370,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyticsElement", function() { return AnalyticsElement; });
 /* harmony import */ var _guiseek_web_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @guiseek/web-core */ "../../../../libs/web/core/src/index.ts");
 /* harmony import */ var _envs_env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../envs/env */ "./envs/env.ts");
-var _dec, _class;
+var _dec, _dec2, _dec3, _class;
 
 
 
 let AnalyticsElement = (_dec = Object(_guiseek_web_core__WEBPACK_IMPORTED_MODULE_0__["ExtendElement"])({
   selector: 'seek-analytics',
   extend: 'script'
-}), _dec(_class = class AnalyticsElement extends HTMLScriptElement {
-  constructor(...args) {
-    super(...args);
-    this._url = 'https://www.googletagmanager.com/gtag/js';
-    this.id = _envs_env__WEBPACK_IMPORTED_MODULE_1__["environment"].gTag;
-    this.src = this._url + '?id=' + this.id;
+}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = class AnalyticsElement extends HTMLScriptElement {
+  constructor() {
+    super();
+    this._url = 'https://www.googletagmanager.com/gtag/js?id=';
+    this._id = _envs_env__WEBPACK_IMPORTED_MODULE_1__["environment"].gTag;
+
+    if (_envs_env__WEBPACK_IMPORTED_MODULE_1__["environment"].production) {
+      const URL = this._url + this._id;
+      this.setAttribute('async', '');
+      this.setAttribute('src', URL);
+    }
   }
 
   onConnect() {
-    const win = window;
-    win.dataLayer = win.dataLayer || [];
+    if (_envs_env__WEBPACK_IMPORTED_MODULE_1__["environment"].production) {
+      this.onload = () => {
+        const winSeek = window;
+        winSeek.dataLayer = winSeek.dataLayer || [];
 
-    function gtag(...args) {
-      win.dataLayer.push(args);
+        function gtag(...args) {
+          winSeek.dataLayer.push(args);
+        }
+
+        gtag('js', new Date());
+        gtag('config', this._id);
+      };
     }
-
-    gtag('js', new Date());
-    gtag('config', this.id);
   }
 
-}) || _class);
+}) || _class) || _class) || _class);
 
 /***/ }),
 
@@ -4474,7 +4461,126 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // document.addEventListener('DOMContentLoaded', () => {
+//   let alReadyScrolling = false
+//   const video = document.querySelector('video')
+//   document.addEventListener('scroll', (ev) => {
+//     if (!alReadyScrolling) {
+//       alReadyScrolling = true
+//       setTimeout(() => {
+//         location.href = '#family'
+//       }, 3000)
+//     }
+//   })
+// })
 
+/***/ }),
+
+/***/ "./section/gallery/animated/animated.element.ts":
+/*!******************************************************!*\
+  !*** ./section/gallery/animated/animated.element.ts ***!
+  \******************************************************/
+/*! exports provided: AnimatedGalleryElement */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimatedGalleryElement", function() { return AnimatedGalleryElement; });
+/* harmony import */ var _shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../shared */ "./shared/index.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "../../../../node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "../../../../node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _guiseek_web_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @guiseek/web-core */ "../../../../libs/web/core/src/index.ts");
+let _dec,
+    _ = t => t,
+    _t,
+    _class;
+
+
+
+
+
+
+const log = type => message => console.log(type, message);
+
+let AnimatedGalleryElement = (_dec = Object(_guiseek_web_core__WEBPACK_IMPORTED_MODULE_3__["Element"])({
+  selector: 'seek-animated-gallery',
+  providers: [_guiseek_web_core__WEBPACK_IMPORTED_MODULE_3__["Http"]],
+  template: Object(_guiseek_web_core__WEBPACK_IMPORTED_MODULE_3__["html"])(_t || (_t = _`
+    <div class="grid"></div>
+
+    <template id="template">
+      <figure>
+        <img src="" alt="" />
+        <figcaption></figcaption>
+      </figure>
+    </template>
+  `))
+}), _dec(_class = class AnimatedGalleryElement extends HTMLElement {
+  constructor(...args) {
+    super(...args);
+    this.destroy = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+    this.grid = void 0;
+    this.tmpl = void 0;
+
+    this.processPhotos = photos => {
+      const total = photos.length - 1;
+      let count = 0;
+      photos.forEach(photo => {
+        this.appendPhoto(photo);
+
+        if (total === count++) {
+          const images = this.querySelectorAll('img');
+          this.observeImagesToLoadWhenVisible(images);
+        }
+      });
+    };
+
+    this.appendPhoto = ({
+      src,
+      title
+    }) => {
+      const clone = Object(_shared__WEBPACK_IMPORTED_MODULE_0__["cloneAs"])(this.tmpl);
+      const img = Object(_shared__WEBPACK_IMPORTED_MODULE_0__["select"])(clone, 'img');
+      const caption = Object(_shared__WEBPACK_IMPORTED_MODULE_0__["select"])(clone, 'figcaption');
+      img.onload = log('lazy image');
+      img.setAttribute('data-src', src);
+      img.setAttribute('alt', title);
+      caption.textContent = title;
+      this.grid.appendChild(clone);
+    };
+  }
+
+  onConnect() {
+    this.grid = Object(_shared__WEBPACK_IMPORTED_MODULE_0__["select"])(this, '.grid');
+    this.tmpl = Object(_shared__WEBPACK_IMPORTED_MODULE_0__["select"])(this, '#template');
+  }
+
+  onInject([http]) {
+    console.log(http);
+    http.get('/assets/data/gifs.json').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["takeUntil"])(this.destroy)).subscribe(this.processPhotos);
+  }
+
+  observeImagesToLoadWhenVisible(images) {
+    if ('IntersectionObserverEntry' in window) {
+      const imageObserver = new IntersectionObserver(entries => {
+        entries.map(entry => {
+          if (entry.isIntersecting) {
+            const image = entry.target;
+            image.src = image.dataset.src;
+            imageObserver.unobserve(image);
+          }
+        });
+      });
+      images.forEach(image => imageObserver.observe(image));
+    }
+  }
+
+  onDestroy() {
+    this.destroy.next();
+    this.destroy.complete();
+  }
+
+}) || _class);
 
 /***/ }),
 
@@ -4531,6 +4637,9 @@ let _dec,
 
 
 
+
+const log = type => message => console.log(type, message);
+
 let GalleryElement = (_dec = Object(_guiseek_web_core__WEBPACK_IMPORTED_MODULE_3__["Element"])({
   selector: 'seek-gallery',
   providers: [_guiseek_web_core__WEBPACK_IMPORTED_MODULE_3__["Http"]],
@@ -4548,19 +4657,34 @@ let GalleryElement = (_dec = Object(_guiseek_web_core__WEBPACK_IMPORTED_MODULE_3
   constructor(...args) {
     super(...args);
     this.destroy = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+    this.http = void 0;
     this.grid = void 0;
     this.tmpl = void 0;
 
-    this.appendPhoto = ({
-      src,
-      title
-    }) => {
+    this.processPhotos = photos => {
+      const total = photos.length - 1;
+      let count = 0;
+      photos.forEach(photo => {
+        this.appendPhoto(photo);
+
+        if (total === count++) {
+          const images = this.querySelectorAll('img');
+          this.observeImagesToLoadWhenVisible(images);
+        }
+      });
+    };
+
+    this.appendPhoto = photo => {
       const clone = Object(_shared__WEBPACK_IMPORTED_MODULE_0__["cloneAs"])(this.tmpl);
-      const img = Object(_shared__WEBPACK_IMPORTED_MODULE_0__["select"])(clone, 'img');
+      const figure = Object(_shared__WEBPACK_IMPORTED_MODULE_0__["select"])(clone, 'figure');
       const caption = Object(_shared__WEBPACK_IMPORTED_MODULE_0__["select"])(clone, 'figcaption');
-      img.src = src;
-      img.alt = title;
-      caption.textContent = title;
+      const img = Object(_shared__WEBPACK_IMPORTED_MODULE_0__["select"])(clone, 'img');
+      img.onload = log('lazy image');
+      img.setAttribute('data-src', photo.src);
+      img.setAttribute('alt', photo.title);
+      caption.textContent = photo.title;
+      figure.classList.add(photo.position);
+      figure.classList.add(photo.size);
       this.grid.appendChild(clone);
     };
   }
@@ -4571,7 +4695,23 @@ let GalleryElement = (_dec = Object(_guiseek_web_core__WEBPACK_IMPORTED_MODULE_3
   }
 
   onInject([http]) {
-    http.get('/assets/data/photos.json').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["takeUntil"])(this.destroy)).subscribe(res => res.map(this.appendPhoto));
+    this.http = http;
+    http.get('/assets/data/photos.json').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["takeUntil"])(this.destroy)).subscribe(this.processPhotos);
+  }
+
+  observeImagesToLoadWhenVisible(images) {
+    if ('IntersectionObserverEntry' in window) {
+      const imageObserver = new IntersectionObserver(entries => {
+        entries.map(entry => {
+          if (entry.isIntersecting) {
+            const image = entry.target;
+            image.src = image.dataset.src;
+            imageObserver.unobserve(image);
+          }
+        });
+      });
+      images.forEach(image => imageObserver.observe(image));
+    }
   }
 
   onDestroy() {
@@ -4679,16 +4819,20 @@ let HeroBannerElement = (_dec = Object(_guiseek_web_core__WEBPACK_IMPORTED_MODUL
 /*!**************************!*\
   !*** ./section/index.ts ***!
   \**************************/
-/*! exports provided: HeroBannerElement, GalleryElement */
+/*! exports provided: AnimatedGalleryElement, HeroBannerElement, GalleryElement */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _hero_banner_hero_banner_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hero-banner/hero-banner.element */ "./section/hero-banner/hero-banner.element.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HeroBannerElement", function() { return _hero_banner_hero_banner_element__WEBPACK_IMPORTED_MODULE_0__["HeroBannerElement"]; });
+/* harmony import */ var _gallery_animated_animated_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gallery/animated/animated.element */ "./section/gallery/animated/animated.element.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AnimatedGalleryElement", function() { return _gallery_animated_animated_element__WEBPACK_IMPORTED_MODULE_0__["AnimatedGalleryElement"]; });
 
-/* harmony import */ var _gallery_gallery_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gallery/gallery.element */ "./section/gallery/gallery.element.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GalleryElement", function() { return _gallery_gallery_element__WEBPACK_IMPORTED_MODULE_1__["GalleryElement"]; });
+/* harmony import */ var _hero_banner_hero_banner_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hero-banner/hero-banner.element */ "./section/hero-banner/hero-banner.element.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HeroBannerElement", function() { return _hero_banner_hero_banner_element__WEBPACK_IMPORTED_MODULE_1__["HeroBannerElement"]; });
+
+/* harmony import */ var _gallery_gallery_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./gallery/gallery.element */ "./section/gallery/gallery.element.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GalleryElement", function() { return _gallery_gallery_element__WEBPACK_IMPORTED_MODULE_2__["GalleryElement"]; });
+
 
 
 
@@ -4786,63 +4930,6 @@ const select = (element, selector) => {
 
 /***/ }),
 
-/***/ "./shared/font-flame/font-flame.element.scss":
-/*!***************************************************!*\
-  !*** ./shared/font-flame/font-flame.element.scss ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var content = __webpack_require__(/*! !../../../../../../node_modules/@nrwl/web/src/utils/third-party/cli-files/plugins/raw-css-loader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??ref--5-oneOf-5-2!../../../../../../node_modules/@nrwl/web/node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-5-3!./font-flame.element.scss */ "../../../../node_modules/@nrwl/web/src/utils/third-party/cli-files/plugins/raw-css-loader.js!../../../../node_modules/postcss-loader/dist/cjs.js?!../../../../node_modules/@nrwl/web/node_modules/sass-loader/dist/cjs.js?!./shared/font-flame/font-flame.element.scss");
-
-if (typeof content === 'string') {
-  content = [[module.i, content, '']];
-}
-
-var options = {}
-
-options.insert = "head";
-options.singleton = false;
-
-var update = __webpack_require__(/*! ../../../../../../node_modules/@nrwl/web/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../../../../node_modules/@nrwl/web/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
-
-if (content.locals) {
-  module.exports = content.locals;
-}
-
-
-/***/ }),
-
-/***/ "./shared/font-flame/font-flame.element.ts":
-/*!*************************************************!*\
-  !*** ./shared/font-flame/font-flame.element.ts ***!
-  \*************************************************/
-/*! exports provided: FontFlameElement */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FontFlameElement", function() { return FontFlameElement; });
-/* harmony import */ var _guiseek_web_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @guiseek/web-core */ "../../../../libs/web/core/src/index.ts");
-/* harmony import */ var _font_flame_element_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./font-flame.element.scss */ "./shared/font-flame/font-flame.element.scss");
-/* harmony import */ var _font_flame_element_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_font_flame_element_scss__WEBPACK_IMPORTED_MODULE_1__);
-var _dec, _dec2, _dec3, _class;
-
-
-
-let FontFlameElement = (_dec = Object(_guiseek_web_core__WEBPACK_IMPORTED_MODULE_0__["ExtendElement"])({
-  selector: 'seek-flame',
-  extend: 'p'
-}), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", []), _dec(_class = _dec2(_class = _dec3(_class = class FontFlameElement extends HTMLParagraphElement {
-  constructor() {
-    super();
-    this.classList.add('blazing');
-  }
-
-}) || _class) || _class) || _class);
-
-/***/ }),
-
 /***/ "./shared/front-end/front-end.element.scss":
 /*!*************************************************!*\
   !*** ./shared/front-end/front-end.element.scss ***!
@@ -4916,7 +5003,7 @@ let FrontEndElement = (_dec = Object(_guiseek_web_core__WEBPACK_IMPORTED_MODULE_
 /*!*************************!*\
   !*** ./shared/index.ts ***!
   \*************************/
-/*! exports provided: CodeEditorElement, FrontEndElement, TxtRotateElement, FontFlameElement, StairsElement, genMapper, getX, getY, cloneAs, select */
+/*! exports provided: CodeEditorElement, FrontEndElement, TxtRotateElement, genMapper, getX, getY, cloneAs, select */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4930,25 +5017,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _txt_rotate_txt_rotate_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./txt-rotate/txt-rotate.element */ "./shared/txt-rotate/txt-rotate.element.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TxtRotateElement", function() { return _txt_rotate_txt_rotate_element__WEBPACK_IMPORTED_MODULE_2__["TxtRotateElement"]; });
 
-/* harmony import */ var _font_flame_font_flame_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./font-flame/font-flame.element */ "./shared/font-flame/font-flame.element.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FontFlameElement", function() { return _font_flame_font_flame_element__WEBPACK_IMPORTED_MODULE_3__["FontFlameElement"]; });
+/* harmony import */ var _parallax_effect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parallax-effect */ "./shared/parallax-effect.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "genMapper", function() { return _parallax_effect__WEBPACK_IMPORTED_MODULE_3__["genMapper"]; });
 
-/* harmony import */ var _stairs_stairs_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stairs/stairs.element */ "./shared/stairs/stairs.element.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StairsElement", function() { return _stairs_stairs_element__WEBPACK_IMPORTED_MODULE_4__["StairsElement"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getX", function() { return _parallax_effect__WEBPACK_IMPORTED_MODULE_3__["getX"]; });
 
-/* harmony import */ var _parallax_effect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parallax-effect */ "./shared/parallax-effect.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "genMapper", function() { return _parallax_effect__WEBPACK_IMPORTED_MODULE_5__["genMapper"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getY", function() { return _parallax_effect__WEBPACK_IMPORTED_MODULE_3__["getY"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getX", function() { return _parallax_effect__WEBPACK_IMPORTED_MODULE_5__["getX"]; });
+/* harmony import */ var _dom_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dom-helpers */ "./shared/dom-helpers.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cloneAs", function() { return _dom_helpers__WEBPACK_IMPORTED_MODULE_4__["cloneAs"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getY", function() { return _parallax_effect__WEBPACK_IMPORTED_MODULE_5__["getY"]; });
-
-/* harmony import */ var _dom_helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dom-helpers */ "./shared/dom-helpers.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cloneAs", function() { return _dom_helpers__WEBPACK_IMPORTED_MODULE_6__["cloneAs"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "select", function() { return _dom_helpers__WEBPACK_IMPORTED_MODULE_6__["select"]; });
-
-
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "select", function() { return _dom_helpers__WEBPACK_IMPORTED_MODULE_4__["select"]; });
 
 
 
@@ -4984,91 +5063,6 @@ const genMapper = (inLower, inUpper, outLower, outUpper) => {
 };
 const getX = genMapper(0, window.innerWidth, -LIMIT, LIMIT);
 const getY = genMapper(0, window.innerHeight, -LIMIT, LIMIT);
-
-/***/ }),
-
-/***/ "./shared/stairs/stairs.element.scss":
-/*!*******************************************!*\
-  !*** ./shared/stairs/stairs.element.scss ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var content = __webpack_require__(/*! !../../../../../../node_modules/@nrwl/web/src/utils/third-party/cli-files/plugins/raw-css-loader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??ref--5-oneOf-5-2!../../../../../../node_modules/@nrwl/web/node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-5-3!./stairs.element.scss */ "../../../../node_modules/@nrwl/web/src/utils/third-party/cli-files/plugins/raw-css-loader.js!../../../../node_modules/postcss-loader/dist/cjs.js?!../../../../node_modules/@nrwl/web/node_modules/sass-loader/dist/cjs.js?!./shared/stairs/stairs.element.scss");
-
-if (typeof content === 'string') {
-  content = [[module.i, content, '']];
-}
-
-var options = {}
-
-options.insert = "head";
-options.singleton = false;
-
-var update = __webpack_require__(/*! ../../../../../../node_modules/@nrwl/web/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../../../../node_modules/@nrwl/web/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
-
-if (content.locals) {
-  module.exports = content.locals;
-}
-
-
-/***/ }),
-
-/***/ "./shared/stairs/stairs.element.ts":
-/*!*****************************************!*\
-  !*** ./shared/stairs/stairs.element.ts ***!
-  \*****************************************/
-/*! exports provided: StairsElement */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StairsElement", function() { return StairsElement; });
-/* harmony import */ var _guiseek_web_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @guiseek/web-core */ "../../../../libs/web/core/src/index.ts");
-/* harmony import */ var _stairs_element_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stairs.element.scss */ "./shared/stairs/stairs.element.scss");
-/* harmony import */ var _stairs_element_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_stairs_element_scss__WEBPACK_IMPORTED_MODULE_1__);
-let _dec,
-    _ = t => t,
-    _t,
-    _class;
-
-
-
-let StairsElement = (_dec = Object(_guiseek_web_core__WEBPACK_IMPORTED_MODULE_0__["Element"])({
-  selector: 'seek-stairs',
-  template: Object(_guiseek_web_core__WEBPACK_IMPORTED_MODULE_0__["html"])(_t || (_t = _`
-    <ul class="words">
-      <li class="words-line">
-        <p>&nbsp;</p>
-        <p>CSS Only</p>
-      </li>
-      <li class="words-line">
-        <p>CSS Only</p>
-        <p>Perspective</p>
-      </li>
-      <li class="words-line">
-        <p>Perspective</p>
-        <p>Text Effect</p>
-      </li>
-      <li class="words-line">
-        <p>Text Effect</p>
-        <p>by</p>
-      </li>
-      <li class="words-line">
-        <p>by</p>
-        <p>James</p>
-      </li>
-      <li class="words-line">
-        <p>James</p>
-        <p>Bosworth</p>
-      </li>
-      <li class="words-line">
-        <p>Bosworth</p>
-        <p>&nbsp;</p>
-      </li>
-    </ul>
-  `))
-}), _dec(_class = class StairsElement extends HTMLElement {}) || _class);
 
 /***/ }),
 

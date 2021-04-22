@@ -1,0 +1,50 @@
+[
+  {
+    "src": "assets/gifs/gif-7.gif",
+    "title": "Rindo igual idiotas na praia",
+    "width": 808,
+    "height": 608,
+    "size": "normal",
+    "position": "none"
+  },
+  {
+    "src": "assets/gifs/gif-2.gif",
+    "title": "Grasel, Guto e Zeno GIF",
+    "width": 972,
+    "height": 730,
+    "size": "normal",
+    "position": "none"
+  },
+  {
+    "src": "assets/gifs/gif-3.gif",
+    "title": "Brothers pra mais de kilometros",
+    "width": 972,
+    "height": 730,
+    "size": "full",
+    "position": "none"
+  },
+  {
+    "src": "assets/gifs/gif-4.gif",
+    "title": "Geovani perdido com o Angular Team kkk",
+    "width": 972,
+    "height": 730,
+    "size": "normal",
+    "position": "none"
+  },
+  {
+    "src": "assets/gifs/gif-6.gif",
+    "title": "Meu sobrinho e o gato do vizinho",
+    "width": 730,
+    "height": 972,
+    "size": "normal",
+    "position": "none"
+  },
+  {
+    "src": "assets/gifs/gif-5.gif",
+    "title": "Pós painel sobre TypeScript - Angular Weekend",
+    "width": 972,
+    "height": 730,
+    "size": "normal",
+    "position": "none"
+  }
+]
