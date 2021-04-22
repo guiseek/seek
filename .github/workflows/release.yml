@@ -35,6 +35,9 @@ jobs:
       - name: Test Builds
         run: npm run affected:build -- --base origin/main
 
+      - name: Build Web Profile
+        run: npm run nx build web-profile
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

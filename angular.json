@@ -168,7 +168,8 @@
             "tsConfig": "apps/web/profile/tsconfig.app.json",
             "assets": [
               "apps/web/profile/src/favicon.ico",
-              "apps/web/profile/src/assets"
+              "apps/web/profile/src/assets",
+              "apps/web/profile/src/CNAME"
             ],
             "styles": ["apps/web/profile/src/styles.scss"],
             "scripts": []
