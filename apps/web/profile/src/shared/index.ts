@@ -1,7 +1,5 @@
 export * from './code-editor/code-editor.element'
 export * from './front-end/front-end.element'
 export * from './txt-rotate/txt-rotate.element'
-export * from './font-flame/font-flame.element'
-export * from './stairs/stairs.element'
 export * from './parallax-effect'
 export * from './dom-helpers'

@@ -1,14 +1,14 @@
 import { ExtendElement, OnConnect } from '@guiseek/web-core'
 import { environment } from '../envs/env'
 
-type WindowAnalytics = Window & {
-  dataLayer?: any[]
+type SeekAnalytics = Window & {
+  dataLayer?: unknown[]
 }
 
 /**
  * @example
  *
- * <script is="seek-analytics" />
+ * <script is="seek-analytics"></script>
  *
  * @class AnalyticsElement
  * @extends {HTMLScriptElement}
@@ -19,21 +19,30 @@ type WindowAnalytics = Window & {
   extend: 'script',
 })
 export class AnalyticsElement extends HTMLScriptElement implements OnConnect {
-  private _url = 'https://www.googletagmanager.com/gtag/js'
+  private _url = 'https://www.googletagmanager.com/gtag/js?id='
 
-  public id = environment.gTag
+  public _id = environment.gTag
 
-  src = this._url + '?id=' + this.id
+  constructor() {
+    super()
+    if (environment.production) {
+      const URL = this._url + this._id
+      this.setAttribute('async', '')
+      this.setAttribute('src', URL)
+    }
+  }
 
   onConnect(): void {
-    const win: WindowAnalytics = window
-    win.dataLayer = win.dataLayer || []
-
-    function gtag(...args: any[]) {
-      win.dataLayer.push(args)
+    if (environment.production) {
+      this.onload = () => {
+        const winSeek = window as SeekAnalytics
+        winSeek.dataLayer = winSeek.dataLayer || []
+        function gtag(...args: unknown[]) {
+          winSeek.dataLayer.push(args)
+        }
+        gtag('js', new Date())
+        gtag('config', this._id)
+      }
     }
-
-    gtag('js', new Date())
-    gtag('config', this.id)
   }
 }
