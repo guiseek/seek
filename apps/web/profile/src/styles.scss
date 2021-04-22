@@ -149,3 +149,9 @@ footer.center {
     background-image: linear-gradient(to right, yellow 0, yellow 100%);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .underlined {
+    font-size: 1.2em;
+  }
+}

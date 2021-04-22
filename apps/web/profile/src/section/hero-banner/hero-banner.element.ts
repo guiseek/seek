@@ -1,5 +1,5 @@
 import { Element, html, OnConnect, OnDestroy } from '@guiseek/web-core'
-import { getX, getY } from '../parallax-effect'
+import { getX, getY } from '../../shared/parallax-effect'
 
 import './hero-banner.element.scss'
 

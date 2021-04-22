@@ -3,4 +3,5 @@
 
 export const environment = {
   production: false,
+  gTag: 'G-49VFMJPFG7',
 }

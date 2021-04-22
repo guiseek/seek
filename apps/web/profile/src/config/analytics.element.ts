@@ -1,4 +1,5 @@
 import { ExtendElement, OnConnect } from '@guiseek/web-core'
+import { environment } from '../envs/env'
 
 type WindowAnalytics = Window & {
   dataLayer?: any[]
@@ -7,7 +8,7 @@ type WindowAnalytics = Window & {
 /**
  * @example
  *
- * <script is="seek-analytics" id="G-49VFMJPFG7" />
+ * <script is="seek-analytics" />
  *
  * @class AnalyticsElement
  * @extends {HTMLScriptElement}
@@ -20,7 +21,7 @@ type WindowAnalytics = Window & {
 export class AnalyticsElement extends HTMLScriptElement implements OnConnect {
   private _url = 'https://www.googletagmanager.com/gtag/js'
 
-  public id = 'G-49VFMJPFG7'
+  public id = environment.gTag
 
   src = this._url + '?id=' + this.id
 

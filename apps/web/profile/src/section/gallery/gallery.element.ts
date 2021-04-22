@@ -38,8 +38,6 @@ export class GalleryElement
   implements OnConnect, OnDestroy, OnInject<[Http]> {
   destroy = new Subject<void>()
 
-  http: Http
-
   grid: HTMLDivElement
   tmpl: HTMLTemplateElement
 
@@ -49,27 +47,20 @@ export class GalleryElement
   }
 
   onInject([http]: [Http]): void {
-    this.http = http
-    this.findPhotos('/assets/data/photos.json')
-  }
-
-  findPhotos(path: string) {
-    this.http
-      .get<Photo[]>(path)
+    http
+      .get<Photo[]>('/assets/data/photos.json')
       .pipe(takeUntil(this.destroy))
       .subscribe((res) => res.map(this.appendPhoto))
   }
 
-  appendPhoto = (photo: Photo) => {
+  appendPhoto = ({ src, title }: Photo) => {
     const clone = cloneAs(this.tmpl)
     const img = select<HTMLImageElement>(clone, 'img')
     const caption = select(clone, 'figcaption')
 
-    img.src = photo.src
-    img.alt = photo.title
-    img.alt = photo.title
-
-    caption.textContent = photo.title
+    img.src = src
+    img.alt = title
+    caption.textContent = title
 
     this.grid.appendChild(clone)
   }

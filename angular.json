@@ -177,8 +177,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/web/profile/src/environments/environment.ts",
-                  "with": "apps/web/profile/src/environments/environment.prod.ts"
+                  "replace": "apps/web/profile/src/envs/env.ts",
+                  "with": "apps/web/profile/src/envs/env.prod.ts"
                 }
               ],
               "optimization": true,
