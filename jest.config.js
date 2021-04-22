@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/libs/peer/client',
     '<rootDir>/apps/web/profile',
     '<rootDir>/libs/web/core',
+    '<rootDir>/apps/seek/client',
   ],
 }

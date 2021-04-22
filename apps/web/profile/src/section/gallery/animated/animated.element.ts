@@ -17,7 +17,7 @@ declare global {
   }
 }
 
-const log = (type: string) => (message: any) => console.log(type, message)
+const log = (type: string) => (message: unknown) => console.log(type, message)
 
 @Element({
   selector: 'seek-animated-gallery',

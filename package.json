@@ -31,6 +31,7 @@
     "update": "ng update @nrwl/workspace",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
+    "web-profile:build": "nx build web-profile --configuration=production",
     "help": "nx help",
     "commit": "./node_modules/cz-customizable/standalone.js",
     "prerelease": "nx affected:build --base origin/main",
