@@ -2,6 +2,9 @@ import './app'
 import './section'
 import './shared'
 import './config'
+import { environment } from './envs/env'
+
+console.log(environment)
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   let alReadyScrolling = false

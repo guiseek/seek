@@ -19,7 +19,7 @@ declare global {
   }
 }
 
-const log = (type: string) => (message: any) => console.log(type, message)
+const log = (type: string) => (message: unknown) => console.log(type, message)
 
 @Element({
   selector: 'seek-gallery',
@@ -51,8 +51,6 @@ export class GalleryElement
   }
 
   onInject([http]: [Http]): void {
-    this.http = http
-
     http
       .get<Photo[]>('/assets/data/photos.json')
       .pipe(takeUntil(this.destroy))
