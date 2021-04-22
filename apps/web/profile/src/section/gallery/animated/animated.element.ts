@@ -1,6 +1,6 @@
-import { cloneAs, select } from '../../shared'
+import { cloneAs, select } from '../../../shared'
 import { takeUntil } from 'rxjs/operators'
-import { Photo } from '../../core'
+import { Photo } from '../../../core'
 import { Subject } from 'rxjs'
 import {
   html,
@@ -11,18 +11,16 @@ import {
   OnInject,
 } from '@guiseek/web-core'
 
-import './gallery.element.scss'
-
 declare global {
   interface HTMLElementTagNameMap {
-    'seek-gallery': GalleryElement
+    'seek-animated-gallery': AnimatedGalleryElement
   }
 }
 
 const log = (type: string) => (message: any) => console.log(type, message)
 
 @Element({
-  selector: 'seek-gallery',
+  selector: 'seek-animated-gallery',
   providers: [Http],
   template: html`
     <div class="grid"></div>
@@ -35,12 +33,10 @@ const log = (type: string) => (message: any) => console.log(type, message)
     </template>
   `,
 })
-export class GalleryElement
+export class AnimatedGalleryElement
   extends HTMLElement
   implements OnConnect, OnDestroy, OnInject<[Http]> {
   destroy = new Subject<void>()
-
-  public http: Http
 
   grid: HTMLDivElement
   tmpl: HTMLTemplateElement
@@ -51,10 +47,9 @@ export class GalleryElement
   }
 
   onInject([http]: [Http]): void {
-    this.http = http
-
+    console.log(http)
     http
-      .get<Photo[]>('/assets/data/photos.json')
+      .get<Photo[]>('/assets/data/gifs.json')
       .pipe(takeUntil(this.destroy))
       .subscribe(this.processPhotos)
   }
@@ -86,18 +81,16 @@ export class GalleryElement
     }
   }
 
-  appendPhoto = (photo: Photo) => {
+  appendPhoto = ({ src, title }: Photo) => {
     const clone = cloneAs(this.tmpl)
-    const figure = select(clone, 'figure')
-    const caption = select(clone, 'figcaption')
     const img = select<HTMLImageElement>(clone, 'img')
+    const caption = select(clone, 'figcaption')
 
     img.onload = log('lazy image')
-    img.setAttribute('data-src', photo.src)
-    img.setAttribute('alt', photo.title)
-    caption.textContent = photo.title
-    figure.classList.add(photo.position)
-    figure.classList.add(photo.size)
+
+    img.setAttribute('data-src', src)
+    img.setAttribute('alt', title)
+    caption.textContent = title
 
     this.grid.appendChild(clone)
   }

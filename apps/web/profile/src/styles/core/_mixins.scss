@@ -1,0 +1,57 @@
+/**
+  Mixin for setting responsive breakpoints
+  @param string | integer
+  @default null
+*/
+@mixin resp($max: null, $min: null) {
+  @if $max == large or $max == lg {
+    $max: $large-screen;
+  }
+  @if $max == medium or $max == md {
+    $max: $medium-screen;
+  }
+  @if $max == small or $max == sm {
+    $max: $small-screen;
+  }
+  @if $max == xsmall or $max == xs {
+    $max: $xsmall-screen;
+  }
+
+  @if ($min != null and $max != null) {
+    @media only screen and (max-width: $max) and (min-width: $min) {
+      @content;
+    }
+  } @else if($max != null and $min == null) {
+    @media only screen and (max-width: $max) {
+      @content;
+    }
+  } @else if($min != null and $max == null) {
+    @media only screen and (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @error 'no matching size found';
+  }
+}
+
+/**
+  Useful helper mixins
+*/
+@mixin hr-after() {
+  // color: lighten($primary, 30%);
+  content: '~~~';
+  display: block;
+  font-size: 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+@mixin center-all() {
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin col-size($percent) {
+  flex: 0 0 $percent;
+  max-width: $percent;
+}

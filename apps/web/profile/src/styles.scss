@@ -1,41 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import './styles/core';
+@import './styles/layout';
+
 html,
 body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  height: 100%;
-}
-
-/* Typography & Links */
-
-body {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
 
 h2,
 h3 {
-  // margin-top: 3em;
   color: grey;
   &:first-child {
     margin-top: 0;
-  }
-}
-
-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  height: 100%;
-  > header {
-    height: 200px;
   }
 }
 
@@ -46,59 +30,25 @@ nav.center {
   justify-content: center;
 }
 
-footer.center {
-  width: 100%;
-  margin: 60px;
+video {
+  max-width: 100%;
+}
+
+footer {
+  padding-top: 220px;
 
   h3 {
-    font-size: 5rem;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  h2,
+  h3 {
+    margin: 3rem;
+    font-size: 4rem;
   }
 }
 
-.skew-text {
-  display: flex;
-  justify-content: center;
-  // margin-top: 50vh;
-  // transform: translateY(-50%);
-  // margin: 250px auto;
-  text-align: center;
-  // border: 1px solid #000;
-  transition: transform 0.3s ease-in-out;
-
-  &:hover {
-    transform: rotateX(35deg), translateY(-50%);
-    span {
-      color: #ccc;
-      &:nth-child(odd) {
-        transform: skewY(15deg);
-        // background-color: #f00;
-        // box-shadow: 0 60px 20px rgba(0,0,0,0.1);
-      }
-      &:nth-child(even) {
-        transform: skewY(-15deg);
-        background-color: #f9f9f9;
-        color: #a6a6a6;
-        // box-shadow: 0 60px 20px rgba(0,0,0,0.1);
-      }
-    }
-  }
-
-  > span {
-    display: block;
-    background-color: #fff;
-    width: 120px;
-    height: 120px;
-    line-height: 120px;
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out,
-      background-color 0.3s ease-in-out;
-    box-shadow: 0 40px 50px rgba(0, 0, 0, 0.1);
-    &:first-child {
-      border-radius: 5px 0 0 5px;
-    }
-  }
-}
-
-// Now that is interesting
 .underlined {
   color: black;
   font-size: 2em;
@@ -155,3 +105,50 @@ footer.center {
     font-size: 1.2em;
   }
 }
+
+// .container {
+
+// }
+
+// .skew-text {
+//   display: flex;
+//   justify-content: center;
+//   // margin-top: 50vh;
+//   // transform: translateY(-50%);
+//   // margin: 250px auto;
+//   text-align: center;
+//   // border: 1px solid #000;
+//   transition: transform 0.3s ease-in-out;
+
+//   &:hover {
+//     transform: rotateX(35deg), translateY(-50%);
+//     span {
+//       color: #ccc;
+//       &:nth-child(odd) {
+//         transform: skewY(15deg);
+//         // background-color: #f00;
+//         // box-shadow: 0 60px 20px rgba(0,0,0,0.1);
+//       }
+//       &:nth-child(even) {
+//         transform: skewY(-15deg);
+//         background-color: #f9f9f9;
+//         color: #a6a6a6;
+//         // box-shadow: 0 60px 20px rgba(0,0,0,0.1);
+//       }
+//     }
+//   }
+
+//   > span {
+//     display: block;
+//     background-color: #fff;
+//     width: 120px;
+//     height: 120px;
+//     line-height: 120px;
+//     transition: transform 0.3s ease-in-out, color 0.3s ease-in-out,
+//       background-color 0.3s ease-in-out;
+//     box-shadow: 0 40px 50px rgba(0, 0, 0, 0.1);
+//     &:first-child {
+//       border-radius: 5px 0 0 5px;
+//     }
+//   }
+// }
