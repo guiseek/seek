@@ -1,4 +1,4 @@
-import './app/app.element'
-import './app/section'
-import './app/shared'
-import './app/config'
+import './app'
+import './section'
+import './shared'
+import './config'

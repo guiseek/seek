@@ -8,10 +8,10 @@ export const genMapper = (
 ) => {
   const range = inUpper - inLower
   const output = outUpper - outLower
-  const MAP = (input: number) => {
+  const mapper = (input: number) => {
     return outLower + (((input - inLower) / range) * output || 0)
   }
-  return MAP
+  return mapper
 }
 
 export const getX = genMapper(0, window.innerWidth, -LIMIT, LIMIT)

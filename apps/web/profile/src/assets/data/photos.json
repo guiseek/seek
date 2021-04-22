@@ -30,6 +30,12 @@
     "height": 1080
   },
   {
+    "src": "assets/photos/photo-7-animated.gif",
+    "title": "Grasel, Guto e Zeno GIF",
+    "width": 972,
+    "height": 730
+  },
+  {
     "src": "assets/photos/photo-8.jpg",
     "title": "Saudade dos eventos!",
     "width": 1080,
@@ -58,12 +64,6 @@
     "title": "Maçaneta e Bebo",
     "width": 1440,
     "height": 1080
-  },
-  {
-    "src": "assets/photos/photo-13.jpg",
-    "title": "Bruninha!! :)",
-    "width": 1280,
-    "height": 960
   },
   {
     "src": "assets/photos/photo-14.jpg",
@@ -492,6 +492,12 @@
     "height": 1280
   },
   {
+    "src": "assets/photos/photo-13.jpg",
+    "title": "Bruninha!! :)",
+    "width": 1280,
+    "height": 960
+  },
+  {
     "src": "assets/photos/photo-86.jpg",
     "title": "Meu primeiro livro autografado kkkk",
     "width": 960,
@@ -520,5 +526,17 @@
     "title": "Rock and roll",
     "width": 2048,
     "height": 1365
+  },
+  {
+    "src": "assets/photos/photo-88.jpeg",
+    "title": "Grasel, grande amigo e mentor",
+    "width": 2592,
+    "height": 1944
+  },
+  {
+    "src": "assets/photos/photo-89.jpeg",
+    "title": "Um dos ZOFES pré BrazilJS",
+    "width": 2480,
+    "height": 1860
   }
 ]

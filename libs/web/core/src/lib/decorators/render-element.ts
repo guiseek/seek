@@ -9,11 +9,13 @@ export const RenderElement = (config: RenderElementConfig) => (
   const connectedCallback = target.prototype.connectedCallback ?? noop
   const disconnectedCallback = target.prototype.disconnectedCallback ?? noop
 
-  const render = target.prototype.render
-
   const template = document.createElement('template')
 
   target.prototype.connectedCallback = function () {
+    if (this.render) {
+      template.innerHTML = this.render.call(this)
+    }
+
     const clone = document.importNode(template.content, true)
 
     if (config.useShadow) {
@@ -39,17 +41,7 @@ export const RenderElement = (config: RenderElementConfig) => (
     prev: string,
     next: string
   ) {
-    if (this[name] !== next) {
-      this[name] = next
-    }
-
-    /**
-     * Verificar conflito com @Attr
-     */
-    // attributeChangedCallback.call(name, prev, next);
-    if (this.render) {
-      this.innerHTML = render.call(this)
-    }
+    this[name] = next
   }
 
   target.prototype.disconnectedCallback = function () {
