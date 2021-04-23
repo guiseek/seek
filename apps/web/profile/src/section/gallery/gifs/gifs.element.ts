@@ -1,34 +1,29 @@
 import { html, Element, OnConnect } from '@guiseek/web-core'
-import { cloneAs, delClass, select } from '../../shared'
-import { Photo } from '../../core'
-import { Subject } from 'rxjs'
-
-import './gallery.element.scss'
+import { cloneAs, select } from '../../../shared'
+import { Photo } from '../../../core'
 
 declare global {
   interface HTMLElementTagNameMap {
-    'seek-gallery': GalleryElement
+    'seek-gifs-gallery': GifsGalleryElement
   }
 }
 
 const log = (type: string) => (message: unknown) => console.log(type, message)
 
 @Element({
-  selector: 'seek-gallery',
+  selector: 'seek-gifs-gallery',
   template: html`
     <div class="grid"></div>
 
     <template id="template">
-      <figure class="skeleton">
+      <figure>
         <img src="" alt="" />
         <figcaption></figcaption>
       </figure>
     </template>
   `,
 })
-export class GalleryElement extends HTMLElement implements OnConnect {
-  destroy = new Subject<void>()
-
+export class GifsGalleryElement extends HTMLElement implements OnConnect {
   grid: HTMLDivElement
   tmpl: HTMLTemplateElement
 
@@ -36,7 +31,7 @@ export class GalleryElement extends HTMLElement implements OnConnect {
     this.grid = select(this, '.grid')
     this.tmpl = select(this, '#template')
 
-    fetch('/assets/photos.json').then((res) => {
+    fetch('/assets/gifs.json').then((res) => {
       res.json().then(this.handleResponse)
     })
   }
@@ -49,9 +44,6 @@ export class GalleryElement extends HTMLElement implements OnConnect {
       if (total === count++) {
         const images = this.querySelectorAll('img')
         this.observeImagesToLoadWhenVisible(images)
-        const afters = this.querySelectorAll('*::after')
-        console.log(afters);
-
       }
     })
   }
@@ -77,7 +69,7 @@ export class GalleryElement extends HTMLElement implements OnConnect {
     const caption = select(clone, 'figcaption')
     const img = select<HTMLImageElement>(clone, 'img')
 
-    img.onload = () => delClass(img.parentElement, 'skeleton')
+    // img.onload = () => delClass(img.parentElement, 'skeleton')
 
     img.setAttribute('data-src', photo.src)
     img.setAttribute('alt', photo.title)
