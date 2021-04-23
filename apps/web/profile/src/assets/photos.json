@@ -665,14 +665,6 @@
     "position": "none"
   },
   {
-    "src": "assets/photos/photo-85.jpg",
-    "title": "Skateboard pra sempre",
-    "width": 960,
-    "height": 539,
-    "size": "normal",
-    "position": "none"
-  },
-  {
     "src": "assets/photos/photo-1.jpg",
     "title": "My niggaz",
     "width": 960,
@@ -717,6 +709,14 @@
     "title": "Conferência de Desenvolvedores do Paraná em 2017",
     "width": 1480,
     "height": 987,
+    "size": "normal",
+    "position": "none"
+  },
+  {
+    "src": "assets/photos/photo-85.jpg",
+    "title": "Skateboard pra sempre",
+    "width": 960,
+    "height": 539,
     "size": "normal",
     "position": "none"
   }

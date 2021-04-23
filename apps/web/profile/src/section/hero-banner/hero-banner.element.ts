@@ -17,11 +17,11 @@ declare global {
     <header>
       <h1>Guilherme Siquinelli</h1>
       <h2>
-        This website is
+        This web page is
         <span
           is="txt-rotate"
           period="1000"
-          rotate='[  "my profile.", "web components.", "custom elements.", "pure native tecnology.", "pretty.", "fun!" ]'
+          rotate='[  "my profile", "web components", "custom elements", "pure native tecnology", "pretty", "fun!" ]'
         ></span>
       </h2>
     </header>
