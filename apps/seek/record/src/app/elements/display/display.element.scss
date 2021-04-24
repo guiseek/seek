@@ -1,0 +1,13 @@
+seek-display {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+video {
+  width: 100%;
+  border: 10px solid black;
+  border-radius: 20px;
+}

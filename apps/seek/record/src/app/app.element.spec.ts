@@ -11,9 +11,9 @@ describe('AppElement', () => {
     expect(app).toBeTruthy()
   })
 
-  // it('should have a greeting', () => {
-  //   app.connectedCallback()
+  it('should have a greeting', () => {
+    app.connectedCallback()
 
-  //   expect(app.querySelector('h1').innerHTML).toEqual('Welcome to seek-client!')
-  // })
+    expect(app.querySelector('h1').innerHTML).toEqual('Welcome to seek-record!')
+  })
 })

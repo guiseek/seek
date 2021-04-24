@@ -1,11 +1,32 @@
+import { Element, html, OnConnect } from '@guiseek/web-core'
 import './app.element.scss'
 
-export class AppElement extends HTMLElement {
+const title = 'seek-client'
+
+@Element({
+  selector: 'seek-peer-root',
+  template: html`
+    <main>
+      <!-- <seek-display></seek-display> -->
+      <seek-record></seek-record>
+    </main>
+  `,
+})
+export class AppElement extends HTMLElement implements OnConnect {
   public static observedAttributes = []
 
+  onConnect(): void {
+    let token: string
+    const uint32 = new Uint32Array(3)
+    const values = crypto.getRandomValues(uint32)
+    const l = values.length
+    for (let i = 0; i < l; i++) {
+      token = values[i].toString(36)
+    }
+  }
+
   connectedCallback() {
-    const title = 'seek-client'
-    this.innerHTML = `
+    const innerHTML = `
       <header class="flex">
         <img alt="Nx logo" width="75" src="https://nx.dev/assets/images/nx-logo-white.svg" />
         <h1>Welcome to ${title}!</h1>
@@ -90,4 +111,4 @@ nx affected:e2e\`
       </main>`
   }
 }
-customElements.define('seek-peer-root', AppElement)
+// customElements.define('seek-peer-root', AppElement)

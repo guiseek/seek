@@ -1,0 +1,240 @@
+button[swap-button][mode='primary'] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 0 16px;
+
+  gap: 6px;
+  height: 36px;
+  min-width: 100px;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  text-overflow: ellipsis;
+
+  // Color
+  color: $seek-primary-default-color;
+  background-color: $seek-primary-default-background;
+
+  // Font
+  font-size: #{$seek-primary-large-button-font-size}px;
+  text-decoration: $seek-primary-large-button-text-decoration;
+  font-family: $seek-primary-large-button-font-family;
+  font-weight: $seek-primary-large-button-font-weight;
+  font-style: $seek-primary-large-button-font-style;
+  font-stretch: $seek-primary-large-button-font-stretch;
+  letter-spacing: $seek-primary-large-button-letter-spacing;
+  line-height: $seek-primary-large-button-line-height;
+  text-transform: $seek-primary-large-button-text-case;
+
+  // Border / Box shadow
+  border-color: $seek-primary-default-border;
+  border-radius: #{$seek-primary-default-drop-shadow-radius}px;
+  border: none;
+  box-shadow: 0 3px 1px -2px $seek-primary-default-drop-shadow-color,
+    0 2px 2px 0 $seek-primary-default-drop-shadow-color,
+    0 1px 5px 0 $seek-primary-default-drop-shadow-color;
+
+  outline: none;
+  cursor: pointer;
+
+  transition: box-shadow 0.2s;
+
+  &::-moz-focus-inner {
+    border: none;
+  }
+
+  /* Highlight, Ripple */
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    opacity: 0;
+  }
+
+  &::before {
+    background-color: $seek-primary-default-background;
+    transition: opacity 0.2s;
+  }
+
+  &::after {
+    background: radial-gradient(
+        circle at center,
+        currentColor 1%,
+        transparent 1%
+      )
+      center/10000% 10000% no-repeat;
+    transition: opacity 1s, background-size 0.5s;
+  }
+
+  /* Hover, Focus */
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 2px rgba($seek-primary-default-color, 0.12);
+    // box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+    //   0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  &:hover::before {
+    opacity: 0.08;
+  }
+
+  &:focus::before {
+    opacity: 0.24;
+  }
+
+  &:hover:focus::before {
+    opacity: 0.32;
+  }
+
+  /* Active */
+  &:active {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  &:active::after {
+    opacity: 0.32;
+    background-size: 100% 100%;
+    transition: background-size 0s;
+  }
+
+  /* Disabled */
+  &:disabled {
+    color: $seek-primary-disabled-color;
+    background-color: $seek-primary-disabled-background;
+    box-shadow: none;
+    cursor: initial;
+  }
+
+  &:disabled::before,
+  &:disabled::after {
+    opacity: 0;
+  }
+}
+
+button[swap-button][mode='secondary'] {
+  margin: 0;
+  padding: 0 16px;
+
+  min-width: 100px;
+  height: 36px;
+
+  position: relative;
+  display: inline-block;
+
+  text-align: center;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+
+  border: solid 1px; /* Safari */
+  box-sizing: border-box;
+
+  outline: none;
+  cursor: pointer;
+
+  // Color
+  color: $seek-secondary-default-color;
+  background-color: $seek-secondary-default-background;
+
+  // Font
+  font-size: #{$seek-secondary-large-button-font-size}px;
+  text-decoration: $seek-secondary-large-button-text-decoration;
+  font-family: $seek-secondary-large-button-font-family;
+  font-weight: $seek-secondary-large-button-font-weight;
+  font-style: $seek-secondary-large-button-font-style;
+  font-stretch: $seek-secondary-large-button-font-stretch;
+  letter-spacing: $seek-secondary-large-button-letter-spacing;
+  line-height: $seek-secondary-large-button-line-height;
+  text-transform: $seek-secondary-large-button-text-case;
+
+  // Border / Box shadow
+  border-color: $seek-secondary-default-border;
+  border-radius: #{$seek-secondary-default-drop-shadow-radius}px;
+  box-shadow: 0 3px 1px -2px $seek-secondary-default-drop-shadow-color,
+    0 2px 2px 0 $seek-secondary-default-drop-shadow-color,
+    0 1px 5px 0 $seek-secondary-default-drop-shadow-color;
+
+  &::-moz-focus-inner {
+    border: none;
+  }
+
+  /* Highlight, Ripple */
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 3px;
+    opacity: 0;
+  }
+
+  &::before {
+    background-color: $seek-secondary-default-background;
+    transition: opacity 0.2s;
+  }
+
+  &::after {
+    background: radial-gradient(
+        circle at center,
+        currentColor 1%,
+        transparent 1%
+      )
+      center/10000% 10000% no-repeat;
+    transition: opacity 1s, background-size 0.5s;
+  }
+
+  /* Hover, Focus */
+  &:hover::before {
+    opacity: 0.04;
+  }
+
+  &:focus::before {
+    opacity: 0.12;
+  }
+
+  &:hover:focus::before {
+    opacity: 0.16;
+  }
+
+  /* Active */
+  &:active::after {
+    opacity: 0.16;
+    background-size: 100% 100%;
+    transition: background-size 0s;
+    background-color: $seek-secondary-pressed-background;
+    color: $seek-secondary-pressed-color;
+    border-color: $seek-secondary-pressed-border;
+  }
+
+  /* Pressed */
+  &:active {
+    background-color: $seek-secondary-pressed-background;
+    color: $seek-secondary-pressed-color;
+    border-color: $seek-secondary-pressed-border;
+  }
+
+  /* Disabled */
+  &:disabled {
+    background-color: $seek-secondary-disabled-background;
+    color: $seek-secondary-disabled-color;
+    border-color: $seek-secondary-disabled-border;
+    box-shadow: none;
+    cursor: initial;
+  }
+
+  &:disabled::before,
+  &:disabled::after {
+    opacity: 0;
+  }
+}

@@ -40,6 +40,9 @@
     },
     "seek-client": {
       "tags": ["type:app"]
+    },
+    "seek-record": {
+      "tags": []
     }
   }
 }
