@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './styles/vars';
+
+body {
+  font-family: $mainfont;
+
+  &,
+  * {
+    transition: all 300ms ease-out;
+  }
+  &.light {
+    background-color: $bglight;
+  }
+  &.dark {
+    background-color: $bgdark;
+  }
+  ul.menu {
+    // position: absolute;
+    // height: $menuheight;
+    // top: 50%;
+    // margin-top: -($menuheight / 2);
+    width: auto;
+    margin-left: $menuleft;
+    li {
+      color: $itemcolor;
+      list-style-type: none;
+      line-height: $menulineheight;
+      font-family: $mainfont;
+      font-size: $menufontsize;
+      text-transform: $menutexttransform;
+      &:hover {
+        color: $itemhover;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+article {
+  background-color: black;
+  color: white;
+}
+
+// html, body {
+//   height: 100%;
+// }
+// body {
+//   margin: 0;
+//   background-color: #212121;
+//   color: #f9f9f9;
+// }
