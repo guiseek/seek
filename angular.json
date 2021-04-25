@@ -291,8 +291,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/seek/client/src/environments/environment.ts",
-                  "with": "apps/seek/client/src/environments/environment.prod.ts"
+                  "replace": "apps/seek/client/src/envs/env.ts",
+                  "with": "apps/seek/client/src/envs/env.prod.ts"
                 }
               ],
               "optimization": true,
@@ -334,6 +334,27 @@
           "outputs": ["coverage/apps/seek/client"],
           "options": {
             "jestConfig": "apps/seek/client/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-router": {
+      "root": "libs/web/router",
+      "sourceRoot": "libs/web/router/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/web/router/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/router"],
+          "options": {
+            "jestConfig": "libs/web/router/jest.config.js",
             "passWithNoTests": true
           }
         }
