@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Media Recorder</title>
+    <base href="/" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:200"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <web-recorder></web-recorder>
+
+    <template id="web-layout">
+      <header>
+        <slot name="web-head"></slot>
+      </header>
+
+      <nav>
+        <slot name="web-nav"></slot>
+      </nav>
+
+      <article>
+        <slot name="web-main"></slot>
+      </article>
+
+      <footer>
+        <slot name="web-foot"></slot>
+      </footer>
+    </template>
+  </body>
+</html>

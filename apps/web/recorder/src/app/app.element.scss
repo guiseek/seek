@@ -1,0 +1,10 @@
+body > *:first-child main {
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin: 0px auto;
+}
+body {
+  transition: filter 100ms ease-in;
+}
