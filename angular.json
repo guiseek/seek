@@ -359,6 +359,79 @@
           }
         }
       }
+    },
+    "web-recorder": {
+      "projectType": "application",
+      "root": "apps/web/recorder",
+      "sourceRoot": "apps/web/recorder/src",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/web/recorder",
+            "index": "apps/web/recorder/src/index.html",
+            "main": "apps/web/recorder/src/main.ts",
+            "polyfills": "apps/web/recorder/src/polyfills.ts",
+            "tsConfig": "apps/web/recorder/tsconfig.app.json",
+            "assets": [
+              "apps/web/recorder/src/favicon.ico",
+              "apps/web/recorder/src/assets"
+            ],
+            "styles": ["apps/web/recorder/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/recorder/src/environments/environment.ts",
+                  "with": "apps/web/recorder/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "web-recorder:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "web-recorder:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/web/recorder/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/web/recorder"],
+          "options": {
+            "jestConfig": "apps/web/recorder/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
