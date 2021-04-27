@@ -6,5 +6,9 @@ body > *:first-child main {
   margin: 0px auto;
 }
 body {
-  transition: filter 100ms ease-in;
+  filter: invert(0);
+  transition: filter 400ms ease-out;
+  &.invert {
+    filter: invert(1);
+  }
 }
