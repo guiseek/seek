@@ -8,5 +8,6 @@ module.exports = {
     '<rootDir>/apps/seek/client',
     '<rootDir>/libs/web/router',
     '<rootDir>/apps/web/recorder',
+    '<rootDir>/libs/util/encoder',
   ],
 }

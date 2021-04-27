@@ -11,8 +11,6 @@ declare global {
   }
 }
 
-const log = (type: string) => (message: unknown) => console.log(type, message)
-
 @Element({
   selector: 'seek-gallery',
   template: html`
@@ -49,9 +47,6 @@ export class GalleryElement extends HTMLElement implements OnConnect {
       if (total === count++) {
         const images = this.querySelectorAll('img')
         this.observeImagesToLoadWhenVisible(images)
-        const afters = this.querySelectorAll('*::after')
-        console.log(afters);
-
       }
     })
   }

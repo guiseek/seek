@@ -8,4 +8,4 @@ import './app/screen/screen.page'
 import './app/app.page'
 import './app/page'
 
-import './index.d'
+// import './index'

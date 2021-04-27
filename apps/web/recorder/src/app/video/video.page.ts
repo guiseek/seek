@@ -1,114 +1,89 @@
-import { VideoElement } from './video.element'
 import { WebPageConfig, WebPage } from '../page'
-import { html } from '@guiseek/web-core'
-
-const template = html`
-  <section>
-    <video id="gum" playsinline  width="800" autoplay muted></video>
-    <video id="recorded" style="display:none" width="800" playsinline loop></video>
-  </section>
-  <nav>
-    <button id="start">Start camera</button>
-    <button id="record" disabled>Start</button>
-    <button id="play" disabled>Play</button>
-    <button id="download" disabled>Download</button>
-  </nav>
-  <form>
-    <h4>Media Stream Constraints options</h4>
-    <label
-      >Echo cancellation: <input type="checkbox" id="echoCancellation"
-    /></label>
-  </form>
-`
+import { style } from './video.style'
+import { tmpl } from './video.tmpl'
 
 @WebPageConfig('/video', 'video-page')
 export class VideoPage extends WebPage {
+  stream: MediaStream
+
   mediaRecorder: MediaRecorder
   recordedBlobs: Blob[]
 
-  error: HTMLSpanElement
-  recorded: VideoElement
+  errorMsgElement: HTMLSpanElement
+  recordedVideo: HTMLVideoElement
+  recordButton: HTMLButtonElement
 
-  start: HTMLButtonElement
-  record: HTMLButtonElement
-  play: HTMLButtonElement
-  download: HTMLButtonElement
-
-  stream: MediaStream
+  playButton: HTMLButtonElement
+  downloadButton: HTMLButtonElement
 
   constructor() {
-    super(template)
+    super(style + tmpl)
   }
 
   connectedCallback() {
-    this.error = this.query('#error')
-    this.recorded = this.query('#recorded')
-    this.record = this.query('#record')
+    this.errorMsgElement = this.query('span#errorMsg')
+    this.recordedVideo = this.query('video#recorded')
+    this.recordButton = this.query('button#record')
 
-    this.record.onclick = (ev: MouseEvent) => {
-      if (this.record.textContent === 'Start') {
-        // Start
-        this.startRecording()
-      } else {
-        // Stop
-        this.stopRecording()
-        this.record.textContent = 'Start'
-        this.play.disabled = false
-        this.download.disabled = false
-      }
-    }
+    console.log(this.recordButton)
 
-    this.play = this.query('#play')
-    this.play.onclick = () => {
-      const superBuffer = new Blob(this.recordedBlobs, { type: 'video/webm' })
-      this.recorded.src = null
-      this.recorded.srcObject = null
-      this.recorded.src = URL.createObjectURL(superBuffer)
-      this.recorded.controls = true
-      this.recorded.play()
-    }
-
-    this.download = this.query('#download')
-    this.download.onclick = () => {
-      const blob = new Blob(this.recordedBlobs, { type: 'video/webm' })
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.style.display = 'none'
-      a.href = url
-      a.download = 'video.webm'
-      this.appendChild(a)
-      a.click()
-      setTimeout(() => {
-        a.remove()
-        URL.revokeObjectURL(url)
-      }, 100)
-    }
-
-    this.start = this.query('#start')
-    this.start.onclick = async () => {
-      console.log(this.mediaRecorder)
-
-      const hasEchoCancellation = this.query<HTMLInputElement>(
-        '#echoCancellation'
-      ).checked
+    this.query('button#start').addEventListener('click', async () => {
       const constraints = {
-        audio: {
-          echoCancellation: { exact: hasEchoCancellation },
-        },
         video: {
           width: 1280,
           height: 720,
         },
       }
-      this.init(constraints)
+      console.log('Using media constraints:', constraints)
+      await this.init(constraints)
+    })
+
+    this.recordButton.addEventListener('click', () => {
+      if (this.recordButton.textContent === 'Start Recording') {
+        this.startRecording()
+      } else {
+        this.stopRecording()
+        this.recordButton.textContent = 'Start Recording'
+        this.playButton.disabled = false
+        this.downloadButton.disabled = false
+      }
+    })
+
+    this.playButton = this.query('button#play')
+    this.playButton.addEventListener('click', () => {
+      const superBuffer = new Blob(this.recordedBlobs, { type: 'video/webm' })
+      this.recordedVideo.src = null
+      this.recordedVideo.srcObject = null
+      this.recordedVideo.src = window.URL.createObjectURL(superBuffer)
+      this.recordedVideo.controls = true
+      this.recordedVideo.play()
+    })
+
+    this.downloadButton = this.query('button#download')
+    this.downloadButton.addEventListener('click', () => {
+      const blob = new Blob(this.recordedBlobs, { type: 'video/webm' })
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.style.display = 'none'
+      a.href = url
+      a.download = 'test.webm'
+      document.body.appendChild(a)
+      a.click()
+      setTimeout(() => {
+        document.body.removeChild(a)
+        window.URL.revokeObjectURL(url)
+      }, 100)
+    })
+  }
+
+  handleDataAvailable = (event: BlobEvent) => {
+    console.log('handleDataAvailable', event)
+    if (event.data && event.data.size > 0) {
+      this.recordedBlobs.push(event.data)
     }
   }
 
-  stopRecording = () => {
-    this.mediaRecorder.stop()
-  }
-
-  startRecording = () => {
+  startRecording() {
     this.recordedBlobs = []
     let options = { mimeType: 'video/webm;codecs=vp9,opus' }
     if (!MediaRecorder.isTypeSupported(options.mimeType)) {
@@ -128,7 +103,7 @@ export class VideoPage extends WebPage {
       this.mediaRecorder = new MediaRecorder(this.stream, options)
     } catch (e) {
       console.error('Exception while creating MediaRecorder:', e)
-      this.error.innerHTML = `Exception while creating MediaRecorder: ${JSON.stringify(
+      this.errorMsgElement.innerHTML = `Exception while creating MediaRecorder: ${JSON.stringify(
         e
       )}`
       return
@@ -140,9 +115,9 @@ export class VideoPage extends WebPage {
       'with options',
       options
     )
-    this.record.textContent = 'Stop'
-    this.play.disabled = true
-    this.download.disabled = true
+    this.recordButton.textContent = 'Stop Recording'
+    this.playButton.disabled = true
+    this.downloadButton.disabled = true
     this.mediaRecorder.onstop = (event) => {
       console.log('Recorder stopped: ', event)
       console.log('Recorded Blobs: ', this.recordedBlobs)
@@ -152,28 +127,26 @@ export class VideoPage extends WebPage {
     console.log('MediaRecorder started', this.mediaRecorder)
   }
 
-  handleDataAvailable = (event: BlobEvent) => {
-    console.log('handleDataAvailable', event)
-    if (event.data && event.data.size > 0) {
-      this.recordedBlobs.push(event.data)
-    }
+  stopRecording = () => {
+    this.mediaRecorder.stop()
   }
 
-  handleSuccess(stream: MediaStream) {
-    this.record.disabled = false
+  handleSuccess(stream) {
+    this.recordButton.disabled = false
+    console.log('getUserMedia() got stream:', stream)
     this.stream = stream
 
-    const gumVideo = this.query<HTMLVideoElement>('#gum')
+    const gumVideo = this.query<HTMLVideoElement>('video#gum')
     gumVideo.srcObject = stream
   }
 
-  async init(constraints: MediaStreamConstraints) {
+  async init(constraints: Pick<MediaStreamConstraints, 'video' | 'audio'>) {
     try {
-      this.handleSuccess(
-        await navigator.mediaDevices.getDisplayMedia({ video: true })
-      )
-    } catch (err) {
-      this.error.innerHTML = `navigator.getUserMedia error:${err.toString()}`
+      const stream = await navigator.mediaDevices.getDisplayMedia(constraints)
+      this.handleSuccess(stream)
+    } catch (e) {
+      console.error('navigator.getUserMedia error:', e)
+      this.errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`
     }
   }
 }

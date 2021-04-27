@@ -432,6 +432,27 @@
           }
         }
       }
+    },
+    "util-encoder": {
+      "root": "libs/util/encoder",
+      "sourceRoot": "libs/util/encoder/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/util/encoder/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/util/encoder"],
+          "options": {
+            "jestConfig": "libs/util/encoder/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

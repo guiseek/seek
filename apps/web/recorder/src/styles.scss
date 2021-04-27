@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/vars';
 
 html,
 body {
@@ -11,16 +12,29 @@ body {
   overflow: hidden;
 }
 
+body > *:first-child main {
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin: 0px auto;
+}
+
+::slotted app-home {
+  width: 980px;
+}
+
 video {
   width: 100%;
   max-width: 100%;
 }
 
-web-recorder {
-  background: url('/assets/stranger.jpeg') center / cover no-repeat;
+app-page {
+  background: url('assets/stranger.jpeg') center / cover no-repeat;
   height: 100vh;
   width: 100vw;
   margin: 0;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
