@@ -15,12 +15,10 @@ export const checkFormat = exeek('npm run format:check')
 
 export const workspaceLint = exeek('npm run lint')
 
-export const affectedLint = exeek('npm run affected:lint -- --base origin/main')
+export const affectedLint = exeek('npm run affected:lint')
 
-export const affectedTest = exeek('npm run affected:test -- --base origin/main')
+export const affectedTest = exeek('npm run affected:test')
 
-export const affectedBuild = exeek(
-  'npm run affected:build -- --base origin/main'
-)
+export const affectedBuild = exeek('npm run affected:build')
 
 export const affectedRelease = exeek('npm run release')

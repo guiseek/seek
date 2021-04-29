@@ -26,10 +26,10 @@ class LZWEncoder {
   EOF = -1
   imgW: number
   imgH: number
-  pixAry
-  initCodeSize
-  remaining
-  curPixel
+  pixAry: any[]
+  initCodeSize: number
+  remaining: number
+  curPixel: number
 
   // GIFCOMPR.C - GIF Image compression routines
   // Lempel-Ziv compression based on 'compress'. GIF modifications by
@@ -48,9 +48,9 @@ class LZWEncoder {
   // James A. Woods (decvax!ihnp4!ames!jaw)
   // Joe Orost (decvax!vax135!petsd!joe)
 
-  n_bits // number of bits/code
+  n_bits: number // number of bits/code
   maxbits = this.BITS // user settable max # bits/code
-  maxcode // maximum code, given n_bits
+  maxcode: number // maximum code, given n_bits
   maxmaxcode = 1 << this.BITS // should NEVER generate this code
   htab = []
   codetab = []
@@ -74,9 +74,9 @@ class LZWEncoder {
   // file size for noticeable speed improvement on small files. Please direct
   // questions about this implementation to ames!jaw.
 
-  g_init_bits
-  ClearCode
-  EOFCode
+  g_init_bits: any
+  ClearCode: number
+  EOFCode: any
 
   // output
   // Output the given code.
@@ -115,12 +115,12 @@ class LZWEncoder {
   ]
 
   // Number of characters so far in this 'packet'
-  a_count
+  a_count: number
 
   // Define the storage for the packet accumulator
   accum = []
 
-  constructor(width: number, height: number, pixels, color_depth) {
+  constructor(width: number, height: number, pixels: any, color_depth: number) {
     this.imgW = width
     this.imgH = height
     this.pixAry = pixels
@@ -129,7 +129,7 @@ class LZWEncoder {
 
   // Add a character to the end of the current packet, and if it is 254
   // characters, flush the packet to disk.
-  char_out(c, outs) {
+  char_out(c: number, outs: any) {
     this.accum[this.a_count++] = c
     if (this.a_count >= 254) this.flush_char(outs)
   }
@@ -137,7 +137,7 @@ class LZWEncoder {
   // Clear out the hash table
   // table clear for block compress
 
-  cl_block(outs) {
+  cl_block(outs: any) {
     this.cl_hash(this.hsize)
     this.free_ent = this.ClearCode + 2
     this.clear_flg = true
@@ -145,18 +145,18 @@ class LZWEncoder {
   }
 
   // reset code table
-  cl_hash(hsize) {
+  cl_hash(hsize: number) {
     for (let i = 0; i < hsize; ++i) this.htab[i] = -1
   }
 
-  compress(init_bits, outs) {
-    let fcode
-    let i /* = 0 */
-    let c
-    let ent
-    let disp
-    let hsize_reg
-    let hshift
+  compress(init_bits: number, outs: any) {
+    let fcode: number
+    let i: number /* = 0 */
+    let c: number
+    let ent: number
+    let disp: number
+    let hsize_reg: number
+    let hshift: number
 
     // Set up the globals: g_init_bits - initial number of bits
     this.g_init_bits = init_bits
@@ -220,7 +220,7 @@ class LZWEncoder {
   }
 
   // ----------------------------------------------------------------------------
-  encode(os) {
+  encode(os: { writeByte: (arg0: number) => void }) {
     os.writeByte(this.initCodeSize) // write "initial code size" byte
     this.remaining = this.imgW * this.imgH // reset navigation letiables
     this.curPixel = 0
@@ -229,7 +229,10 @@ class LZWEncoder {
   }
 
   // Flush the packet to disk, and reset the accumulator
-  flush_char(outs) {
+  flush_char(outs: {
+    writeByte: (arg0: any) => void
+    writeBytes: (arg0: any[], arg1: number, arg2: any) => void
+  }) {
     if (this.a_count > 0) {
       outs.writeByte(this.a_count)
       outs.writeBytes(this.accum, 0, this.a_count)
@@ -237,7 +240,7 @@ class LZWEncoder {
     }
   }
 
-  MAXCODE(n_bits) {
+  MAXCODE(n_bits: number) {
     return (1 << n_bits) - 1
   }
 
@@ -252,7 +255,7 @@ class LZWEncoder {
     return pix & 0xff
   }
 
-  output(code, outs) {
+  output(code: number, outs: any) {
     this.cur_accum &= this.masks[this.cur_bits]
 
     if (this.cur_bits > 0) this.cur_accum |= code << this.cur_bits
@@ -373,7 +376,7 @@ class NeuQuant {
   /* defs for decreasing alpha factor */
   alphabiasshift = 10 /* alpha starts at 1.0 */
   initalpha = 1 << this.alphabiasshift
-  alphadec /* biased by 10 bits */
+  alphadec: number /* biased by 10 bits */
 
   /* radbias and alpharadbias used for radpower calculation */
   radbiasshift = 8
@@ -385,12 +388,12 @@ class NeuQuant {
    * Types and Global Variables --------------------------
    */
 
-  thepicture /* the input image itself */
-  lengthcount /* lengthcount = H*W*3 */
-  samplefac /* sampling factor 1..30 */
+  thepicture: any /* the input image itself */
+  lengthcount: number /* lengthcount = H*W*3 */
+  samplefac: number /* sampling factor 1..30 */
 
   // typedef int pixel[4]; /* BGRc */
-  network /* the network itself - [netsize][4] */
+  network: any[] /* the network itself - [netsize][4] */
   netindex = []
 
   /* for network lookup - really 256 */
@@ -400,9 +403,9 @@ class NeuQuant {
   freq = []
   radpower = []
 
-  constructor(thepic, len, sample) {
-    let i
-    let p
+  constructor(thepic: any, len: any, sample: number) {
+    let i: number
+    let p: number[]
 
     this.thepicture = thepic
     this.lengthcount = len
@@ -443,14 +446,14 @@ class NeuQuant {
    */
 
   inxbuild() {
-    let i
-    let j
-    let smallpos
-    let smallval
-    let p
-    let q
-    let previouscol
-    let startpos
+    let i: number
+    let j: number
+    let smallpos: string | number
+    let smallval: number
+    let p: any[]
+    let q: any[]
+    let previouscol: number
+    let startpos: number
 
     previouscol = 0
     startpos = 0
@@ -508,20 +511,20 @@ class NeuQuant {
    */
 
   learn() {
-    let i
-    let j
-    let b
-    let g
-    let r
-    let radius
-    let rad
-    let alpha
-    let step
-    let delta
-    let samplepixels
-    let p
-    let pix
-    let lim
+    let i: number
+    let j: number
+    let b: number
+    let g: number
+    let r: number
+    let radius: number
+    let rad: number
+    let alpha: number
+    let step: number
+    let delta: number
+    let samplepixels: number
+    let p: { [x: string]: number }
+    let pix: number
+    let lim: number
 
     if (this.lengthcount < this.minpicturebytes) this.samplefac = 1
 
@@ -588,14 +591,14 @@ class NeuQuant {
    * ----------------------------------------------------------------------------
    */
 
-  map(b, g, r) {
-    let i
-    let j
-    let dist
-    let a
-    let bestd
-    let p
-    let best
+  map(b: number, g: number, r: number) {
+    let i: number
+    let j: number
+    let dist: number
+    let a: number
+    let bestd: number
+    let p: any[]
+    let best: number
 
     bestd = 1000 /* biggest possible dist is 256*3 */
     best = -1
@@ -670,8 +673,8 @@ class NeuQuant {
    */
 
   unbiasnet() {
-    let i
-    let j
+    let i: number
+    let j: any
 
     for (i = 0; i < this.netsize; i++) {
       this.network[i][0] >>= this.netbiasshift
@@ -687,14 +690,14 @@ class NeuQuant {
    * ---------------------------------------------------------------------------------
    */
 
-  alterneigh(rad, i, b, g, r) {
-    let j
-    let k
-    let lo
-    let hi
-    let a
-    let m
-    let p
+  alterneigh(rad: number, i: number, b: number, g: number, r: number) {
+    let j: number
+    let k: number
+    let lo: number
+    let hi: number
+    let a: number
+    let m: number
+    let p: number[]
 
     lo = i - rad
     if (lo < -1) lo = -1
@@ -736,7 +739,13 @@ class NeuQuant {
    * ----------------------------------------------------
    */
 
-  altersingle(alpha, i, b, g, r) {
+  altersingle(
+    alpha: number,
+    i: string | number,
+    b: number,
+    g: number,
+    r: number
+  ) {
     /* alter hit neuron */
     let n = this.network[i]
     n[0] -= (alpha * (n[0] - b)) / this.initalpha
@@ -748,22 +757,22 @@ class NeuQuant {
    * Search for biased BGR values ----------------------------
    */
 
-  contest(b, g, r) {
+  contest(b: number, g: number, r: number) {
     /* finds closest neuron (min dist) and updates freq */
     /* finds best neuron (min dist-bias) and returns position */
     /* for frequently chosen neurons, freq[i] is high and bias[i] is negative */
     /* bias[i] = gamma*((1/netsize)-freq[i]) */
 
-    let i
-    let dist
-    let a
-    let biasdist
-    let betafreq
-    let bestpos
-    let bestbiaspos
-    let bestd
-    let bestbiasd
-    let n
+    let i: number
+    let dist: number
+    let a: number
+    let biasdist: number
+    let betafreq: number
+    let bestpos: number
+    let bestbiaspos: any
+    let bestd: number
+    let bestbiasd: number
+    let n: number[]
 
     bestd = ~(1 << 31)
     bestbiasd = bestd
@@ -825,40 +834,48 @@ export const GIFEncoder = function () {
   }
 
   ByteArray.prototype.getData = function () {
-    let v
+    let v: any
     for (let v = '', l = this.bin.length, i = 0; i < l; i++)
       v += chr[this.bin[i]]
     return v
   }
 
-  ByteArray.prototype.writeByte = function (val) {
+  ByteArray.prototype.writeByte = function (val: any) {
     this.bin.push(val)
   }
 
-  ByteArray.prototype.writeUTFBytes = function (string) {
+  ByteArray.prototype.writeUTFBytes = function (string: string) {
     for (let l = string.length, i = 0; i < l; i++)
       this.writeByte(string.charCodeAt(i))
   }
 
-  ByteArray.prototype.writeBytes = function (array, offset, length) {
+  ByteArray.prototype.writeBytes = function (
+    array: string | any[],
+    offset: number,
+    length: any
+  ) {
     for (let l = length || array.length, i = offset || 0; i < l; i++)
       this.writeByte(array[i])
   }
 
   let exports = {}
-  let width // image size
-  let height
+  let width: number // image size
+  let height: number
   let transparent = null // transparent color if given
-  let transIndex // transparent index in color table
+  let transIndex: number // transparent index in color table
   let repeat = -1 // no repeat
   let delay = 0 // frame delay (hundredths)
   let started = false // ready to output frames
-  let out
-  let image // current frame
-  let pixels // BGR byte array from frame
-  let indexedPixels // converted frame indexed to palette
-  let colorDepth // number of bit planes
-  let colorTab // RGB palette
+  let out: {
+    writeByte: (arg0: number) => void
+    writeUTFBytes: (arg0: string) => void
+    writeBytes: (arg0: any) => void
+  }
+  let image: any // current frame
+  let pixels: string | any[] // BGR byte array from frame
+  let indexedPixels: any[] // converted frame indexed to palette
+  let colorDepth: number // number of bit planes
+  let colorTab: string | any[] // RGB palette
   let usedEntry = [] // active palette entries
   let palSize = 7 // color table size (bits-1)
   let dispose = -1 // disposal code (-1 = use default)
@@ -875,7 +892,7 @@ export const GIFEncoder = function () {
    * @param ms
    */
 
-  let setDelay = function setDelay(ms) {
+  let setDelay = function setDelay(ms: number) {
     delay = Math.round(ms / 10)
   }
 
@@ -888,7 +905,7 @@ export const GIFEncoder = function () {
    * int disposal code.
    */
 
-  let setDispose = function setDispose(code) {
+  let setDispose = function setDispose(code: number) {
     if (code >= 0) dispose = code
   }
 
@@ -902,7 +919,7 @@ export const GIFEncoder = function () {
    * @return
    */
 
-  let setRepeat = function setRepeat(iter) {
+  let setRepeat = function setRepeat(iter: number) {
     if (iter >= 0) repeat = iter
   }
 
@@ -916,7 +933,7 @@ export const GIFEncoder = function () {
    * Color to be treated as transparent on display.
    */
 
-  let setTransparent = function setTransparent(c) {
+  let setTransparent = function setTransparent(c: any) {
     transparent = c
   }
 
@@ -926,7 +943,7 @@ export const GIFEncoder = function () {
    * string to be insterted as comment
    */
 
-  let setComment = function setComment(c) {
+  let setComment = function setComment(c: string) {
     comment = c
   }
 
@@ -936,7 +953,18 @@ export const GIFEncoder = function () {
    * BitmapData object to be treated as a GIF's frame
    */
 
-  let addFrame = function addFrame(im, is_imageData) {
+  let addFrame = function addFrame(
+    im: {
+      getImageData: (
+        arg0: number,
+        arg1: number,
+        arg2: any,
+        arg3: any
+      ) => { (): any; new (): any; data: any }
+      canvas: { width: any; height: any }
+    },
+    is_imageData: any
+  ) {
     if (im === null || !started || out === null) {
       throw new Error('Please call start method before calling addFrame')
     }
@@ -1020,7 +1048,7 @@ export const GIFEncoder = function () {
    * float frame rate (frames per second)
    */
 
-  let setFrameRate = function setFrameRate(fps) {
+  let setFrameRate = function setFrameRate(fps: number) {
     if (fps != 0xf) delay = Math.round(100 / fps)
   }
 
@@ -1035,7 +1063,7 @@ export const GIFEncoder = function () {
    * @return
    */
 
-  let setQuality = function setQuality(quality) {
+  let setQuality = function setQuality(quality: number) {
     if (quality < 1) quality = 1
     sample = quality
   }
@@ -1049,7 +1077,7 @@ export const GIFEncoder = function () {
    * int frame width.
    */
 
-  let setSize = function setSize(w, h) {
+  let setSize = function setSize(w: any, h: any) {
     if (started && !firstFrame) return
     width = w
     height = h
@@ -1127,7 +1155,7 @@ export const GIFEncoder = function () {
    * Returns index of palette color closest to c
    */
 
-  let findClosest = function findClosest(c) {
+  let findClosest = function findClosest(c: number) {
     if (colorTab === null) return -1
     let r = (c & 0xff0000) >> 16
     let g = (c & 0x00ff00) >> 8
@@ -1180,8 +1208,8 @@ export const GIFEncoder = function () {
     out.writeByte(0x21) // extension introducer
     out.writeByte(0xf9) // GCE label
     out.writeByte(4) // data block size
-    let transp
-    let disp
+    let transp: number
+    let disp: number
     if (transparent === null) {
       transp = 0
       disp = 0 // dispose = no action
@@ -1290,7 +1318,7 @@ export const GIFEncoder = function () {
     for (let i = 0; i < n; i++) out.writeByte(0)
   }
 
-  let WriteShort = function WriteShort(pValue) {
+  let WriteShort = function WriteShort(pValue: number) {
     out.writeByte(pValue & 0xff)
     out.writeByte((pValue >> 8) & 0xff)
   }
@@ -1312,7 +1340,10 @@ export const GIFEncoder = function () {
     return out
   }
 
-  let setProperties = function setProperties(has_start, is_first) {
+  let setProperties = function setProperties(
+    has_start: boolean,
+    is_first: boolean
+  ) {
     started = has_start
     firstFrame = is_first
   }
