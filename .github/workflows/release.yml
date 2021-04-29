@@ -24,13 +24,13 @@ jobs:
         run: npm run format:check
 
       - name: Lint Workspace & Code
-        run: npm run affected:lint -- --base origin/main
+        run: npm run affected:lint -- --exclude=util-encoder --base=origin/main
 
       - name: Unit Tests
-        run: npm run affected:test -- --base origin/main
+        run: npm run affected:test -- --base=origin/main
 
       - name: Test Builds
-        run: npm run affected:build -- --base origin/main
+        run: npm run affected:build -- --base=origin/main
 
       - name: Build Web Profile
         run: npm run web-profile:build
@@ -41,8 +41,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/apps/web/profile
 
-      - name: Build, Release on GitHub & Publish to NPM
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run release
+      # - name: Build, Release on GitHub & Publish to NPM
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   run: npm run release

@@ -35,7 +35,7 @@
     "help": "nx help",
     "commit": "./node_modules/cz-customizable/standalone.js",
     "prerelease": "nx affected:build --base origin/main",
-    "release": "nx affected --target release --base origin/main",
+    "release": "ts-node scripts/release.ts",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
