@@ -12,10 +12,10 @@ describe('AppElement', () => {
   })
 
   it('should have a greeting', () => {
+    spyOn(app, 'connectedCallback')
+
     app.connectedCallback()
 
-    expect(app.querySelector('h1').innerHTML).toEqual(
-      'Welcome to web-transfer!'
-    )
+    expect(app.connectedCallback).toBeCalledTimes(1)
   })
 })

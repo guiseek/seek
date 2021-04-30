@@ -1,10 +1,10 @@
-import { WebPage, WebPageConfig } from './page'
+import { WebPage, WebPageConfig } from './core/page'
 import { style } from './transfer.style'
 import { tmpl } from './transfer.tmpl'
 
 const MAX_CHUNK_SIZE = 262144
 
-@WebPageConfig('/transfer', 'transfer-page')
+@WebPageConfig('/', 'transfer-page')
 export class TransferPage extends WebPage {
   constructor() {
     super(style + tmpl, 'closed')
@@ -114,7 +114,7 @@ export class TransferPage extends WebPage {
       const localOffer = await this.localConnection.createOffer()
       await this.handleLocalDescription(localOffer)
     } catch (e) {
-      console.error('Failed to create session description: ', e)
+      console.error('Falha ao criar SDP: ', e)
     }
 
     this.transferStatus.innerHTML = 'Configuração de conexão do par concluída.'
@@ -184,19 +184,19 @@ export class TransferPage extends WebPage {
 
   handleLocalDescription = async (desc: RTCSessionDescriptionInit) => {
     this.localConnection.setLocalDescription(desc)
-    console.log('Offer from localConnection:\n', desc.sdp)
+    console.log('Oferta da conexão local:\n', desc.sdp)
     this.remoteConnection.setRemoteDescription(desc)
     try {
       const remoteAnswer = await this.remoteConnection.createAnswer()
       this.handleRemoteAnswer(remoteAnswer)
     } catch (e) {
-      console.error('Error when creating remote answer: ', e)
+      console.error('Erro ao criar resposta remota: ', e)
     }
   }
 
   handleRemoteAnswer(desc: RTCSessionDescriptionInit) {
     this.remoteConnection.setLocalDescription(desc)
-    console.log('Answer from remoteConnection:\n', desc.sdp)
+    console.log('Resposta da conexão remota:\n', desc.sdp)
     this.localConnection.setRemoteDescription(desc)
   }
 
@@ -259,7 +259,7 @@ export class TransferPage extends WebPage {
       this.localConnection.sctp.maxMessageSize,
       MAX_CHUNK_SIZE
     )
-    console.log('Determined chunk size: ', this.chunkSize)
+    console.log('Tamanho determinado pra cada pedaço: ', this.chunkSize)
 
     this.dataString = new Array(this.chunkSize).fill('X').join('')
     this.lowWaterMark = this.chunkSize // Um único pedaço
