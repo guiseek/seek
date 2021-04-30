@@ -5,6 +5,8 @@ import './app/video/video.page'
 
 import './app/screen/screen.page'
 
+import './app/transfer/transfer.page'
+
 import './app/app.page'
 import './app/page'
 

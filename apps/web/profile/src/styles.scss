@@ -23,11 +23,23 @@ h3 {
   }
 }
 
+body > main {
+  display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+}
+
 nav.center {
   margin: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.social-section {
+  display: flex;
+  width: 300px;
+  justify-content: space-around;
 }
 
 footer {
@@ -50,18 +62,49 @@ footer {
   }
 }
 
+.max-width {
+  max-width: 1000px;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-between {
+  justify-content: space-between;
+}
+
 .underlined {
-  color: black;
   font-size: 2em;
   line-height: 1.2;
   text-decoration: none;
-  background-image: linear-gradient(to right, yellow 0, yellow 100%);
+  background-image: linear-gradient(to right, black 0, black 100%);
   background-position: 0 1.2em;
   background-size: 0 100%;
   background-repeat: no-repeat;
-  transition: background 0.5s;
+  transition: background 0.5s, color 0.5s;
 
+  color: black;
+
+  svg path {
+    fill: black;
+    transition: fill 0.5s;
+  }
   &:hover {
+    color: white;
+    svg path {
+      fill: white;
+    }
     background-size: 100% 100%;
   }
 
@@ -89,7 +132,7 @@ footer {
   // <a href="#" class="underlined underlined--gradient">PICKLE RIIIICK</a>
   &--gradient {
     background-position: 0 -0.1em;
-    background-image: linear-gradient(to right, yellow 0, lightgreen 100%);
+    background-image: linear-gradient(to right, black 0, lightgreen 100%);
   }
 
   // Example:
@@ -97,7 +140,7 @@ footer {
   &--reverse {
     background-position: 100% -0.1em;
     transition: background 1s; //yep, that's a long link
-    background-image: linear-gradient(to right, yellow 0, yellow 100%);
+    background-image: linear-gradient(to right, black 0, black 100%);
   }
 }
 
