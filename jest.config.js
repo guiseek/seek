@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/libs/web/router',
     '<rootDir>/apps/web/recorder',
     '<rootDir>/libs/util/encoder',
+    '<rootDir>/apps/web/transfer',
   ],
 }

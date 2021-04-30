@@ -453,6 +453,79 @@
           }
         }
       }
+    },
+    "web-transfer": {
+      "projectType": "application",
+      "root": "apps/web/transfer",
+      "sourceRoot": "apps/web/transfer/src",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/web/transfer",
+            "index": "apps/web/transfer/src/index.html",
+            "main": "apps/web/transfer/src/main.ts",
+            "polyfills": "apps/web/transfer/src/polyfills.ts",
+            "tsConfig": "apps/web/transfer/tsconfig.app.json",
+            "assets": [
+              "apps/web/transfer/src/favicon.ico",
+              "apps/web/transfer/src/assets"
+            ],
+            "styles": ["apps/web/transfer/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/transfer/src/environments/environment.ts",
+                  "with": "apps/web/transfer/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "web-transfer:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "web-transfer:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/web/transfer/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/web/transfer"],
+          "options": {
+            "jestConfig": "apps/web/transfer/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

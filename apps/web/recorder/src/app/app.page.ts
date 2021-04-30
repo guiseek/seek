@@ -8,7 +8,8 @@ import { html } from '@guiseek/web-core'
 @WebPageConfig('/', 'app-page')
 export class AppPage extends WebPage {
   constructor() {
-    super(html`<video-page></video-page>`)
+    // super(html`<video-page></video-page>`)
+    super(html`<transfer-page></transfer-page>`)
 
     const route = location.pathname
 

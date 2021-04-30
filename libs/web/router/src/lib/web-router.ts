@@ -133,9 +133,8 @@ export class WebRouter extends HTMLElement {
   }
 
   private _cloneTemplateNode(id: string) {
-    let templateElement: HTMLTemplateElement
+    const templateElement: HTMLTemplateElement = document.querySelector(id)
 
-    templateElement = document.querySelector(id)
     const templateContent = templateElement.content
 
     return templateContent.cloneNode(true)
