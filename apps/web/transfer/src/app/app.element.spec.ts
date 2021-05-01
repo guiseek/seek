@@ -12,10 +12,10 @@ describe('AppElement', () => {
   })
 
   it('should have a greeting', () => {
-    spyOn(app, 'connectedCallback')
+    spyOn(app, 'onBoot')
 
-    app.connectedCallback()
+    app.onBoot()
 
-    expect(app.connectedCallback).toBeCalledTimes(1)
+    expect(app.onBoot).toBeCalledTimes(1)
   })
 })

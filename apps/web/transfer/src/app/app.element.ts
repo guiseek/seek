@@ -1,33 +1,28 @@
-import { WebElementConfig } from './core/element'
-import { WebPage, routes } from './core/page'
+import { createTemplate, WebApp, WebRoot } from './core/app'
 import { html } from '@guiseek/web-core'
+
 import './app.element.scss'
 
-@WebElementConfig('app-page')
-export class AppElement extends WebPage {
-  constructor() {
-    super(html`<main id="outlet"></main>`)
+const template = createTemplate(
+  html`
+    <main>
+      <h1>Transfer</h1>
+      <slot name="outlet"></slot>
+    </main>
+  `
+)
 
-    const route = location.pathname
-
-    if (routes.get(route)) {
-      const tag = routes.get(route)
-      const page = document.createElement(tag)
-
-      const outlet = this.query('#outlet')
-      if (outlet) outlet.appendChild(page)
-    }
-  }
-  connectedCallback() {
-    const links = this.queryAll('ul.menu-bar li')
-    if (links.length) this.toggleLinks(links)
+@WebApp('app-boot', {}, template)
+export class AppElement extends WebRoot {
+  onBoot() {
+    console.log('this: ', this)
+    console.log('main: ', this.queryAll('main'))
   }
 
-  toggleLinks(links: NodeListOf<HTMLElement>) {
-    links.forEach((link) => {
-      const classList = document.body.classList
-      link.onmouseover = () => classList.toggle('invert')
-      link.onmouseout = () => classList.toggle('invert')
-    })
+  onChild(child: HTMLElement) {
+    console.log('child; ', child)
+    console.log('input', this.queryAll('input'))
+    console.log('input', this.querySelectorAll('input'))
+    console.log('child->input', child.querySelectorAll('input'))
   }
 }

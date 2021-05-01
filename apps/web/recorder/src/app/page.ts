@@ -20,7 +20,7 @@ export abstract class WebPage extends HTMLElement {
     return this._shadowRoot
   }
 
-  constructor(html: string = '', mode: ShadowRootMode = 'open') {
+  constructor(html = '', mode: ShadowRootMode = 'open') {
     super()
     this.shadowRoot = this.attachShadow({ mode })
     const template = document.createElement('template')

@@ -30,7 +30,7 @@ export abstract class WebElement extends HTMLElement {
     return this._shadowRoot
   }
 
-  constructor(html: string = '') {
+  constructor(html = '') {
     super()
     const template = document.createElement('template')
     template.innerHTML = html
