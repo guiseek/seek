@@ -18,7 +18,7 @@ jobs:
       - name: Check Format
         run: npm run format:check -- --base origin/main
       - name: Lint Workspace & Code
-        run: npm run affected:lint -- --base origin/main
+        run: npm run affected:lint -- --exclude=util-encoder --base=origin/main
       - name: Unit Tests
         run: npm run affected:test -- --base origin/main
       - name: Test Builds

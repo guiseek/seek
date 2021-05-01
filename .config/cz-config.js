@@ -38,6 +38,7 @@ module.exports = {
   scopes: [
     'web-profile',
     'web-core',
+    'web-phone',
     'peer-signaling',
     'peer-core',
     'peer-client',
