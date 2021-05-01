@@ -55,6 +55,12 @@
     },
     "web-phone": {
       "tags": []
+    },
+    "node-server": {
+      "tags": []
+    },
+    "node-client": {
+      "tags": []
     }
   }
 }

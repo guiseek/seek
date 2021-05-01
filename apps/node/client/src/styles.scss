@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+video {
+  max-width: 100%;
+}
+
+video[is='web-consumer'],
+video[is='web-broadcast'] {
+  display: block;
+  border: 3px solid black;
+  // margin: 4px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: white;
+  width: 100%;
+  & + button {
+    margin: 4px;
+    padding: 10px;
+    width: 100%;
+  }
+}

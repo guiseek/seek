@@ -11,5 +11,7 @@ module.exports = {
     '<rootDir>/libs/util/encoder',
     '<rootDir>/apps/web/transfer',
     '<rootDir>/apps/web/phone',
+    '<rootDir>/apps/node/server',
+    '<rootDir>/apps/node/client',
   ],
 }
