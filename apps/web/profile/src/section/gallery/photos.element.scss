@@ -1,5 +1,5 @@
 @supports (display: grid) {
-  seek-gallery {
+  seek-photos {
     display: block;
   }
 }
@@ -38,7 +38,7 @@
       min-height: 200px;
       position: relative;
       overflow: hidden;
-      background-color: rgba(0,0,0,.17);
+      background-color: rgba(0, 0, 0, 0.17);
 
       &::before {
         content: '';

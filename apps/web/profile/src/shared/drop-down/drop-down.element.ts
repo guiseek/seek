@@ -29,7 +29,6 @@ export class DropDownNavElement extends HTMLElement implements OnConnect {
     const onDocClick = (e: MouseEvent & { target: Anchor }) => {
       if (el.contains(e.target)) {
         e.preventDefault()
-        console.log(el.contains(e.target))
         return
       }
 

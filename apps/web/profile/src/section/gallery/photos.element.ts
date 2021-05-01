@@ -1,41 +1,30 @@
-import { cloneAs, select } from '../../../shared'
-import { takeUntil } from 'rxjs/operators'
-import { Photo } from '../../../core'
+import { html, Element, OnConnect } from '@guiseek/web-core'
+import { cloneAs, delClass, select } from '../../shared'
+import { Photo } from '../../core'
 import { Subject } from 'rxjs'
-import {
-  html,
-  Http,
-  Element,
-  OnConnect,
-  OnDestroy,
-  OnInject,
-} from '@guiseek/web-core'
+
+import './photos.element.scss'
 
 declare global {
   interface HTMLElementTagNameMap {
-    'seek-animated-gallery': AnimatedGalleryElement
+    'seek-photos': PhotosElement
   }
 }
 
-const log = (type: string) => (message: unknown) => console.log(type, message)
-
 @Element({
-  selector: 'seek-animated-gallery',
-  providers: [Http],
+  selector: 'seek-photos',
   template: html`
     <div class="grid"></div>
 
     <template id="template">
-      <figure>
+      <figure class="skeleton">
         <img src="" alt="" />
         <figcaption></figcaption>
       </figure>
     </template>
   `,
 })
-export class AnimatedGalleryElement
-  extends HTMLElement
-  implements OnConnect, OnDestroy, OnInject<[Http]> {
+export class PhotosElement extends HTMLElement implements OnConnect {
   destroy = new Subject<void>()
 
   grid: HTMLDivElement
@@ -44,17 +33,13 @@ export class AnimatedGalleryElement
   onConnect(): void {
     this.grid = select(this, '.grid')
     this.tmpl = select(this, '#template')
+
+    fetch('/assets/photos.json').then((res) => {
+      res.json().then(this.handleResponse)
+    })
   }
 
-  onInject([http]: [Http]): void {
-    console.log(http)
-    http
-      .get<Photo[]>('/assets/gifs.json')
-      .pipe(takeUntil(this.destroy))
-      .subscribe(this.processPhotos)
-  }
-
-  processPhotos = (photos: Photo[]) => {
+  handleResponse = (photos: Photo[]) => {
     const total = photos.length - 1
     let count = 0
     photos.forEach((photo) => {
@@ -81,22 +66,22 @@ export class AnimatedGalleryElement
     }
   }
 
-  appendPhoto = ({ src, title }: Photo) => {
+  appendPhoto = (photo: Photo) => {
     const clone = cloneAs(this.tmpl)
-    const img = select<HTMLImageElement>(clone, 'img')
+    const figure = select(clone, 'figure')
     const caption = select(clone, 'figcaption')
+    const img = select<HTMLImageElement>(clone, 'img')
 
-    img.onload = log('lazy image')
+    img.onload = () => delClass(img.parentElement, 'skeleton')
 
-    img.setAttribute('data-src', src)
-    img.setAttribute('alt', title)
-    caption.textContent = title
+    img.setAttribute('data-src', photo.src)
+    img.setAttribute('alt', photo.title)
+
+    caption.textContent = photo.title
+
+    figure.classList.add(photo.position)
+    figure.classList.add(photo.size)
 
     this.grid.appendChild(clone)
-  }
-
-  onDestroy(): void {
-    this.destroy.next()
-    this.destroy.complete()
   }
 }
