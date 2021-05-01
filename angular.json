@@ -599,6 +599,130 @@
           }
         }
       }
+    },
+    "node-server": {
+      "root": "apps/node/server",
+      "sourceRoot": "apps/node/server/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/node/server",
+            "main": "apps/node/server/src/main.ts",
+            "tsConfig": "apps/node/server/tsconfig.app.json",
+            "assets": ["apps/node/server/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/node/server/src/environments/environment.ts",
+                  "with": "apps/node/server/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "node-server:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/node/server/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/node/server"],
+          "options": {
+            "jestConfig": "apps/node/server/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "node-client": {
+      "projectType": "application",
+      "root": "apps/node/client",
+      "sourceRoot": "apps/node/client/src",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/node/client",
+            "index": "apps/node/client/src/index.html",
+            "main": "apps/node/client/src/main.ts",
+            "polyfills": "apps/node/client/src/polyfills.ts",
+            "tsConfig": "apps/node/client/tsconfig.app.json",
+            "assets": [
+              "apps/node/client/src/favicon.ico",
+              "apps/node/client/src/assets"
+            ],
+            "styles": ["apps/node/client/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/node/client/src/environments/environment.ts",
+                  "with": "apps/node/client/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "node-client:build",
+            "proxyConfig": "apps/node/client/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "node-client:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/node/client/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/node/client"],
+          "options": {
+            "jestConfig": "apps/node/client/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
