@@ -526,6 +526,79 @@
           }
         }
       }
+    },
+    "web-phone": {
+      "projectType": "application",
+      "root": "apps/web/phone",
+      "sourceRoot": "apps/web/phone/src",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/web/phone",
+            "index": "apps/web/phone/src/index.html",
+            "main": "apps/web/phone/src/main.ts",
+            "polyfills": "apps/web/phone/src/polyfills.ts",
+            "tsConfig": "apps/web/phone/tsconfig.app.json",
+            "assets": [
+              "apps/web/phone/src/favicon.ico",
+              "apps/web/phone/src/assets"
+            ],
+            "styles": ["apps/web/phone/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/phone/src/environments/environment.ts",
+                  "with": "apps/web/phone/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "web-phone:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "web-phone:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/web/phone/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/web/phone"],
+          "options": {
+            "jestConfig": "apps/web/phone/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

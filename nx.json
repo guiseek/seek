@@ -52,6 +52,9 @@
     },
     "web-transfer": {
       "tags": []
+    },
+    "web-phone": {
+      "tags": []
     }
   }
 }
