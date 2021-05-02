@@ -28,6 +28,7 @@
     "web-transfer": { "tags": [] },
     "web-phone": { "tags": [] },
     "node-server": { "tags": [] },
-    "node-client": { "tags": [] }
+    "node-client": { "tags": [] },
+    "web-seek-elements": { "tags": [] }
   }
 }

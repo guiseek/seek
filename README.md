@@ -1,5 +1,40 @@
 # Seek
 
+## Projetos
+
+### Apps
+
+```sh
+├── node
+│   ├── client
+#   │   custom elements
+│   │
+│   │
+│   └── server
+#       nodejs express
+│
+│
+├── seek
+│   └── client
+#       n/a
+│
+└── web
+    ├── phone
+#   │   n/a
+    │
+    ├── profile
+#   │   perfil pessoal
+#   │   custom elements
+    │
+    ├── recorder
+    │   : screen recorder
+#   │   custom elements
+    │
+    └── transfer
+#       custom elements
+
+```
+
 ```sh
 
 # core

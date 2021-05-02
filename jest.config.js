@@ -13,5 +13,6 @@ module.exports = {
     '<rootDir>/apps/web/phone',
     '<rootDir>/apps/node/server',
     '<rootDir>/apps/node/client',
+    '<rootDir>/libs/web/seek/elements',
   ],
 }

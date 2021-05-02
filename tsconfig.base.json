@@ -21,7 +21,8 @@
       "@seek-peer/client": ["libs/peer/client/src/index.ts"],
       "@guiseek/web-core": ["libs/web/core/src/index.ts"],
       "@guiseek/web-router": ["libs/web/router/src/index.ts"],
-      "@guiseek/util-encoder": ["libs/util/encoder/src/index.ts"]
+      "@guiseek/util-encoder": ["libs/util/encoder/src/index.ts"],
+      "@web-seek/elements": ["libs/web/seek/elements/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

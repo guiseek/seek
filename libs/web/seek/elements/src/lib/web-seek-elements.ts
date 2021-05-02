@@ -1,13 +1,13 @@
 import 'reflect-metadata'
 
-export const WebElementConfig = (
+export const Element = (
   selector: string,
   options?: ElementDefinitionOptions
 ) => (target: CustomElementConstructor) => {
   customElements.define(selector, target, options)
 }
 
-export function WebProp(): any {
+export function attr(): any {
   return (target: any) => {
     target.attributeChangedCallback = function (
       name: string,
@@ -30,12 +30,20 @@ export abstract class WebElement extends HTMLElement {
     return this._shadowRoot
   }
 
-  constructor(html = '') {
+  constructor(html = '', mode: ShadowRootMode = 'open') {
     super()
-    const template = document.createElement('template')
-    template.innerHTML = html
 
-    this.shadowRoot = this.attachShadow({ mode: 'open' })
-    this.shadowRoot.appendChild(template.content.cloneNode(true))
+    if (html) {
+      const template = document.createElement('template')
+      template.innerHTML = html
+
+      this.shadowRoot = this.attachShadow({ mode })
+      this.shadowRoot.appendChild(template.content.cloneNode(true))
+    }
   }
+}
+
+//
+export function webSeekElements(): string {
+  return 'web-seek-elements'
 }

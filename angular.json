@@ -723,6 +723,27 @@
           }
         }
       }
+    },
+    "web-seek-elements": {
+      "root": "libs/web/seek/elements",
+      "sourceRoot": "libs/web/seek/elements/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/web/seek/elements/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/seek/elements"],
+          "options": {
+            "jestConfig": "libs/web/seek/elements/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
