@@ -1,5 +1,5 @@
-import { WebElementConfig, WebProp } from '../../core/element'
-import { headers, servers } from '../common'
+import { WebElementConfig, WebProp } from '../core/element'
+import { headers, servers } from './common'
 
 @WebElementConfig('web-consumer', { extends: 'video' })
 export class WebConsumer extends HTMLVideoElement {
@@ -13,8 +13,11 @@ export class WebConsumer extends HTMLVideoElement {
   @WebProp()
   muted = true
 
+  @WebProp()
+  host = '/api/web-consumer'
+
   connectedCallback() {
-    const button = document.createElement('button')
+    const button = document.createElement('button', { is: 'mac-button' })
     button.textContent = 'Consumer'
     button.onclick = () => this.init()
     this.insertAdjacentElement('afterend', button)
@@ -38,7 +41,7 @@ export class WebConsumer extends HTMLVideoElement {
 
     const body = JSON.stringify({ sdp: peer.localDescription })
 
-    fetch('http://localhost:3333/api/consumer', {
+    fetch(this.host, {
       method: 'post',
       headers,
       body,
