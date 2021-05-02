@@ -1,0 +1,29 @@
+domains:
+- domain: node-server.component.tools
+  type: PRIMARY
+name: component-tools
+region: nyc
+services:
+- build_command: npm run node:build
+  environment_slug: node-js
+  envs:
+  - key: DB_USER
+    scope: RUN_AND_BUILD_TIME
+    value: component-tools
+  - key: DB_PASS
+    scope: RUN_AND_BUILD_TIME
+    value: pqqrI2hEbMgJmC14
+  - key: DB_NAME
+    scope: RUN_AND_BUILD_TIME
+    value: community
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: guiseek/seek
+  http_port: 3000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: component-tools
+  routes:
+  - path: /
+  run_command: npm run node:server
