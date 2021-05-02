@@ -39,6 +39,7 @@ module.exports = {
     'web-profile',
     'web-core',
     'web-phone',
+    'web-recorder',
     'node-server',
     'node-client',
     'peer-signaling',
