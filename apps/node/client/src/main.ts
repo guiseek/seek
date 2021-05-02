@@ -1,3 +1,4 @@
-import './app/app.element.ts'
-import './app/consumer/consumer'
-import './app/broadcast/broadcast'
+import './app/app.element'
+import './app/broadcast'
+import './app/consumer'
+import './app/button'

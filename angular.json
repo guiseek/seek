@@ -611,18 +611,18 @@
           "options": {
             "outputPath": "dist/apps/node/server",
             "main": "apps/node/server/src/main.ts",
-            "tsConfig": "apps/node/server/tsconfig.app.json",
-            "assets": ["apps/node/server/src/assets"]
+            "tsConfig": "apps/node/server/tsconfig.app.json"
           },
           "configurations": {
             "production": {
               "optimization": true,
               "extractLicenses": true,
               "inspect": false,
+              "sourceMap": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/node/server/src/environments/environment.ts",
-                  "with": "apps/node/server/src/environments/environment.prod.ts"
+                  "replace": "apps/node/server/src/envs/env.ts",
+                  "with": "apps/node/server/src/envs/env.prod.ts"
                 }
               ]
             }
@@ -675,8 +675,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/node/client/src/environments/environment.ts",
-                  "with": "apps/node/client/src/environments/environment.prod.ts"
+                  "replace": "apps/node/client/src/envs/env.ts",
+                  "with": "apps/node/client/src/envs/env.prod.ts"
                 }
               ],
               "optimization": true,
