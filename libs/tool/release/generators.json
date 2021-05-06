@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "tool-release",
+  "version": "0.0.1",
+  "generators": {
+    "tool-release": {
+      "factory": "./src/generators/tool-release/generator",
+      "schema": "./src/generators/tool-release/schema.json",
+      "description": "tool-release generator"
+    }
+  }
+}

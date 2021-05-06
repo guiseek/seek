@@ -53,14 +53,6 @@
             "main": "libs/peer/core/src/index.ts",
             "assets": ["libs/peer/core/*.md", "libs/peer/core/LICENSE"]
           }
-        },
-        "release": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": [],
-          "options": {
-            "command": "npx semantic-release --dry-run",
-            "cwd": "libs/peer/core"
-          }
         }
       }
     },
@@ -95,14 +87,6 @@
               "libs/peer/signaling/LICENSE"
             ]
           }
-        },
-        "release": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": [],
-          "options": {
-            "command": "npx semantic-release --dry-run",
-            "cwd": "libs/peer/signaling"
-          }
         }
       }
     },
@@ -135,14 +119,6 @@
           "options": {
             "jestConfig": "libs/peer/client/jest.config.js",
             "passWithNoTests": true
-          }
-        },
-        "release": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": [],
-          "options": {
-            "command": "npx semantic-release --dry-run",
-            "cwd": "libs/peer/client"
           }
         }
       },
@@ -254,14 +230,6 @@
             "tsConfig": "libs/web/core/tsconfig.lib.json",
             "packageJson": "libs/web/core/package.json",
             "main": "libs/web/core/src/index.ts"
-          }
-        },
-        "release": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": [],
-          "options": {
-            "command": "npx semantic-release --dry-run",
-            "cwd": "libs/web/core"
           }
         }
       }
@@ -741,6 +709,93 @@
           "options": {
             "jestConfig": "libs/web/seek/elements/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/web/seek/elements",
+            "tsConfig": "libs/web/seek/elements/tsconfig.lib.json",
+            "packageJson": "libs/web/seek/elements/package.json",
+            "main": "libs/web/seek/elements/src/index.ts",
+            "assets": ["libs/web/seek/elements/*.md"]
+          }
+        },
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "npx semantic-release -e ./libs/web/seek/elements/.releaserc.json --debug"
+          }
+        }
+      }
+    },
+    "tool-release": {
+      "root": "libs/tool/release",
+      "sourceRoot": "libs/tool/release/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/tool/release/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tool/release"],
+          "options": {
+            "jestConfig": "libs/tool/release/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/tool/release",
+            "tsConfig": "libs/tool/release/tsconfig.lib.json",
+            "packageJson": "libs/tool/release/package.json",
+            "main": "libs/tool/release/src/index.ts",
+            "assets": [
+              "libs/tool/release/*.md",
+              {
+                "input": "./libs/tool/release/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/tool/release",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/tool/release",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "npx semantic-release -e ./libs/tool/release/.releaserc.json"
+          }
+        }
+      }
+    },
+    "tool-release-e2e": {
+      "projectType": "application",
+      "root": "apps/tool/release-e2e",
+      "sourceRoot": "apps/tool/release-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "tool-release:build",
+            "npmPackageName": "@seek-peer/release",
+            "pluginOutputPath": "dist/libs/tool/release",
+            "jestConfig": "apps/tool/release-e2e/jest.config.js"
           }
         }
       }
