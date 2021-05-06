@@ -48,8 +48,6 @@ ng generate @nrwl/angular:library --name=client --style=scss --directory=peer --
 
 
 #releases
-ng generate @nrwl/workspace:run-commands --name=release --command='npx semantic-release --dry-run' --project=peer-client --cwd=libs/peer/client
-
 ng generate @nrwl/workspace:run-commands --name=release --command='npx semantic-release --dry-run' --project=peer-core --cwd=libs/peer/core
 
 ng generate @nrwl/workspace:run-commands --name=release --command='npx semantic-release --dry-run' --project=peer-signaling --cwd=libs/peer/signaling

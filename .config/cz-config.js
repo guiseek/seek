@@ -38,6 +38,7 @@ module.exports = {
   scopes: [
     'web-profile',
     'web-core',
+    'web-seek',
     'web-phone',
     'tool-release',
     'web-recorder',

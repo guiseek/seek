@@ -90,44 +90,6 @@
         }
       }
     },
-    "peer-client": {
-      "projectType": "library",
-      "root": "libs/peer/client",
-      "sourceRoot": "libs/peer/client/src",
-      "prefix": "peer",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/peer/client/tsconfig.lib.json",
-            "project": "libs/peer/client/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/peer/client/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/peer/client/src/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/peer/client/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "web-profile": {
       "projectType": "application",
       "root": "apps/web/profile",
@@ -796,6 +758,110 @@
             "npmPackageName": "@seek-peer/release",
             "pluginOutputPath": "dist/libs/tool/release",
             "jestConfig": "apps/tool/release-e2e/jest.config.js"
+          }
+        }
+      }
+    },
+    "web-common": {
+      "root": "libs/web/common",
+      "sourceRoot": "libs/web/common/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/web/common",
+            "main": "libs/web/common/src/index.ts",
+            "tsConfig": "libs/web/common/tsconfig.lib.json",
+            "assets": ["libs/web/common/*.md"]
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/web/common/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/common"],
+          "options": {
+            "jestConfig": "libs/web/common/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-seek": {
+      "projectType": "application",
+      "root": "apps/web/seek",
+      "sourceRoot": "apps/web/seek/src",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/web/seek",
+            "index": "apps/web/seek/src/index.html",
+            "main": "apps/web/seek/src/main.ts",
+            "polyfills": "apps/web/seek/src/polyfills.ts",
+            "tsConfig": "apps/web/seek/tsconfig.app.json",
+            "assets": [
+              "apps/web/seek/src/favicon.ico",
+              "apps/web/seek/src/assets"
+            ],
+            "styles": ["apps/web/seek/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/seek/src/environments/environment.ts",
+                  "with": "apps/web/seek/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "web-seek:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "web-seek:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/web/seek/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/web/seek"],
+          "options": {
+            "jestConfig": "apps/web/seek/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

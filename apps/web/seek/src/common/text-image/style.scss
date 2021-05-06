@@ -1,0 +1,13 @@
+[is='text-image'] {
+  margin-top: 20px;
+  font-size: 180px;
+  color: transparent;
+  background: orange url('/assets/maringa-laranja.jpeg');
+  -webkit-background-clip: text;
+  background-size: contain;
+  background-clip: text;
+
+  @media (max-width: 600px) {
+    font-size: 45px;
+  }
+}

@@ -2,7 +2,6 @@ module.exports = {
   projects: [
     '<rootDir>/libs/peer/core',
     '<rootDir>/libs/peer/signaling',
-    '<rootDir>/libs/peer/client',
     '<rootDir>/apps/web/profile',
     '<rootDir>/libs/web/core',
     '<rootDir>/apps/seek/client',
@@ -16,5 +15,7 @@ module.exports = {
     '<rootDir>/libs/web/seek/elements',
     '<rootDir>/libs/tool/release',
     '<rootDir>/apps/tool/release-e2e',
+    '<rootDir>/libs/web/common',
+    '<rootDir>/apps/web/seek',
   ],
 }
