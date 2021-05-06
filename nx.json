@@ -29,6 +29,8 @@
     "web-phone": { "tags": [] },
     "node-server": { "tags": [] },
     "node-client": { "tags": [] },
-    "web-seek-elements": { "tags": [] }
+    "web-seek-elements": { "tags": [] },
+    "tool-release": { "tags": [] },
+    "tool-release-e2e": { "tags": [], "implicitDependencies": ["tool-release"] }
   }
 }

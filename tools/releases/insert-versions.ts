@@ -17,14 +17,20 @@ function getPackageVersion(
   packageName: string,
   packageJson: PackageJson
 ): string | undefined {
-  if (packageName === packageJson.name) {
-    return packageJson.version
-  }
+  const {
+    name,
+    version,
+    dependencies,
+    devDependencies,
+    peerDependencies,
+  } = packageJson
+
+  if (packageName === name) return version
 
   return (
-    (packageJson.dependencies && packageJson.dependencies[packageName]) ||
-    (packageJson.devDependencies && packageJson.devDependencies[packageName]) ||
-    (packageJson.peerDependencies && packageJson.peerDependencies[packageName])
+    (dependencies && dependencies[packageName]) ||
+    (devDependencies && devDependencies[packageName]) ||
+    (peerDependencies && peerDependencies[packageName])
   )
 }
 

@@ -22,7 +22,8 @@
       "@guiseek/web-core": ["libs/web/core/src/index.ts"],
       "@guiseek/web-router": ["libs/web/router/src/index.ts"],
       "@guiseek/util-encoder": ["libs/util/encoder/src/index.ts"],
-      "@web-seek/elements": ["libs/web/seek/elements/src/index.ts"]
+      "@web-seek/elements": ["libs/web/seek/elements/src/index.ts"],
+      "@guiseek/tool-release": ["libs/tool/release/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

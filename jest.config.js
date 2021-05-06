@@ -14,5 +14,7 @@ module.exports = {
     '<rootDir>/apps/node/server',
     '<rootDir>/apps/node/client',
     '<rootDir>/libs/web/seek/elements',
+    '<rootDir>/libs/tool/release',
+    '<rootDir>/apps/tool/release-e2e',
   ],
 }
