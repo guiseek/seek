@@ -29,8 +29,14 @@ jobs:
       - name: Unit Tests
         run: npm run affected:test -- --base origin/main
 
-      - name: Test Builds
-        run: npm run affected:build -- --base origin/main
+      # - name: Test Builds
+      #   run: npm run affected:build -- --base origin/main
+
+      - name: Build, Release on GitHub & Publish to NPM
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run release
 
       - name: Build Web Profile
         run: npm run web-profile:build
@@ -40,9 +46,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/apps/web/profile
-
-      - name: Build, Release on GitHub & Publish to NPM
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run release
