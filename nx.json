@@ -18,7 +18,6 @@
   "projects": {
     "peer-core": { "tags": [] },
     "peer-signaling": { "tags": ["side:server", "type:feature", "scope:peer"] },
-    "peer-client": { "tags": ["side:client", "type:feature", "scope:peer"] },
     "web-profile": { "tags": ["type:web"] },
     "web-core": { "tags": [] },
     "seek-client": { "tags": ["type:app"] },
@@ -31,6 +30,11 @@
     "node-client": { "tags": [] },
     "web-seek-elements": { "tags": [] },
     "tool-release": { "tags": [] },
-    "tool-release-e2e": { "tags": [], "implicitDependencies": ["tool-release"] }
+    "tool-release-e2e": {
+      "tags": [],
+      "implicitDependencies": ["tool-release"]
+    },
+    "web-common": { "tags": [] },
+    "web-seek": { "tags": [] }
   }
 }
