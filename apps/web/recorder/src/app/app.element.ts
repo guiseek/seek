@@ -1,4 +1,4 @@
-import { Element, WebElement, clickToTarget, html } from '@web-seek/elements'
+import { Element, WebElement, clickToTarget, html } from '@guiseek/web-elements'
 
 @Element('web-recorder')
 export class WebRecorder extends WebElement {

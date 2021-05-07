@@ -1,11 +1,11 @@
 {
-  "extends": "../../../../.releaserc.json",
-  "tagFormat": "web-seek-elements-v${version}",
+  "extends": "../../../.releaserc.json",
+  "tagFormat": "web-elements-v${version}",
   "plugins": [
     [
       "@guiseek/tool-release",
       {
-        "project": "web-seek-elements"
+        "project": "web-elements"
       }
     ],
     [

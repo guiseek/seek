@@ -1,4 +1,4 @@
-import { Element, html } from '@web-seek/elements'
+import { Element, html } from '@guiseek/web-elements'
 import { BaseSection } from './base/section'
 
 @Element('photos-section', { extends: 'section' })

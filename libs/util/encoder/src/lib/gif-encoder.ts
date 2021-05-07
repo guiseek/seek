@@ -18,6 +18,7 @@
  * @author Kevin Weiner (original Java version - kweiner@fmsware.com)
  * @author Thibault Imbert (AS3 version - bytearray.org)
  * @author Kevin Kwok (JavaScript version - https://github.com/antimatter15/jsgif)
+ * @author Guilherme Siquinelli (TypeScript version - https://github.com/guiseek/seek)
  * @version 0.1 AS3 implementation
  */
 
@@ -299,7 +300,7 @@ class LZWEncoder {
   // return exports;
 }
 
-/*
+/**
  * NeuQuant Neural-Net Quantization Algorithm
  * ------------------------------------------
  *
@@ -318,13 +319,14 @@ class LZWEncoder {
  * sublicense, and/or sell copies of the Software, and to permit persons who
  * receive copies from any such party to do so, with the only requirement being
  * that this copyright notice remain intact.
- */
+ **/
 
-/*
+/**
  * This class handles Neural-Net quantization algorithm
  * @author Kevin Weiner (original Java version - kweiner@fmsware.com)
  * @author Thibault Imbert (AS3 version - bytearray.org)
  * @author Kevin Kwok (JavaScript version - https://github.com/antimatter15/jsgif)
+ * @author Guilherme Siquinelli (TypeScript version - https://github.com/guiseek/seek)
  * @version 0.1 AS3 implementation
  */
 
@@ -1350,7 +1352,3 @@ export const GIFEncoder = function () {
 
   return exports
 }
-
-// if(typeof MediaStreamRecorder !== 'undefined') {
-//     MediaStreamRecorder.GIFEncoder = GIFEncoder;
-// }

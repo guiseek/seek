@@ -25,71 +25,6 @@
     }
   },
   "projects": {
-    "peer-core": {
-      "root": "libs/peer/core",
-      "sourceRoot": "libs/peer/core/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/peer/core/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/peer/core/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/peer/core",
-            "tsConfig": "libs/peer/core/tsconfig.lib.json",
-            "packageJson": "libs/peer/core/package.json",
-            "main": "libs/peer/core/src/index.ts",
-            "assets": ["libs/peer/core/*.md", "libs/peer/core/LICENSE"]
-          }
-        }
-      }
-    },
-    "peer-signaling": {
-      "root": "libs/peer/signaling",
-      "sourceRoot": "libs/peer/signaling/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/peer/signaling/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/peer/signaling/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/peer/signaling",
-            "tsConfig": "libs/peer/signaling/tsconfig.lib.json",
-            "packageJson": "libs/peer/signaling/package.json",
-            "main": "libs/peer/signaling/src/index.ts",
-            "assets": [
-              "libs/peer/signaling/*.md",
-              "libs/peer/signaling/LICENSE"
-            ]
-          }
-        }
-      }
-    },
     "web-profile": {
       "projectType": "application",
       "root": "apps/web/profile",
@@ -106,6 +41,7 @@
             "tsConfig": "apps/web/profile/tsconfig.app.json",
             "assets": [
               "apps/web/profile/src/favicon.ico",
+              "apps/web/profile/src/robots.txt",
               "apps/web/profile/src/assets",
               "apps/web/profile/src/CNAME"
             ],
@@ -122,11 +58,11 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -654,43 +590,6 @@
         }
       }
     },
-    "web-seek-elements": {
-      "root": "libs/web/seek/elements",
-      "sourceRoot": "libs/web/seek/elements/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/web/seek/elements/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/seek/elements"],
-          "options": {
-            "jestConfig": "libs/web/seek/elements/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/web/seek/elements",
-            "tsConfig": "libs/web/seek/elements/tsconfig.lib.json",
-            "packageJson": "libs/web/seek/elements/package.json",
-            "main": "libs/web/seek/elements/src/index.ts",
-            "assets": ["libs/web/seek/elements/*.md"]
-          }
-        },
-        "release": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "command": "npx semantic-release -e ./libs/web/seek/elements/.releaserc.json --debug"
-          }
-        }
-      }
-    },
     "tool-release": {
       "root": "libs/tool/release",
       "sourceRoot": "libs/tool/release/src",
@@ -862,6 +761,43 @@
           "options": {
             "jestConfig": "apps/web/seek/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-elements": {
+      "root": "libs/web/elements",
+      "sourceRoot": "libs/web/elements/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/web/elements/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/elements"],
+          "options": {
+            "jestConfig": "libs/web/elements/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/web/elements",
+            "tsConfig": "libs/web/elements/tsconfig.lib.json",
+            "packageJson": "libs/web/elements/package.json",
+            "main": "libs/web/elements/src/index.ts",
+            "assets": ["libs/web/elements/*.md"]
+          }
+        },
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "npx semantic-release -e ./libs/web/elements/.releaserc.json --debug"
           }
         }
       }

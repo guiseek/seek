@@ -1,4 +1,4 @@
-import { Element } from '@web-seek/elements'
+import { Element } from '@guiseek/web-elements'
 
 @Element('section-header', { extends: 'h2' })
 export class SectionHeader extends HTMLHeadingElement {

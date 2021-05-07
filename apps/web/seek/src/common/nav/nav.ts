@@ -1,4 +1,4 @@
-import { Element } from '@web-seek/elements'
+import { Element } from '@guiseek/web-elements'
 import { BaseSection } from '../../sections/base'
 
 @Element('web-nav', { extends: 'nav' })
