@@ -1,19 +1,4 @@
 {
   "extends": "../../../.releaserc.json",
-  "tagFormat": "web-elements-v${version}",
-  "plugins": [
-    [
-      "@guiseek/tool-release",
-      {
-        "project": "web-elements"
-      }
-    ],
-    [
-      "@semantic-release/npm",
-      {
-        "pkgRoot": "dist/libs/web/seek/elements"
-      }
-    ],
-    "@semantic-release/github"
-  ]
+  "tagFormat": "web-elements-v${version}"
 }
