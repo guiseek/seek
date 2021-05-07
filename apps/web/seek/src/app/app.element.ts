@@ -11,10 +11,10 @@ export class AppElement extends HTMLElement {
     super()
     this.innerHTML = html`
       <header>
-        <nav>
+        <nav is="web-nav">
           <a data-href="#refSeek0" role="link">Wek Seek</a>
-          <a data-href="#refSeek1" role="link">Talks</a>
-          <a data-href="#refSeek2" role="link">Photos</a>
+          <!-- <a data-href="#refSeek1" role="link">Talks</a>
+          <a data-href="#refSeek2" role="link">Photos</a> -->
         </nav>
       </header>
       <main class="wrapper">

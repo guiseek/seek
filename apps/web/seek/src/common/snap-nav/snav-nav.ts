@@ -1,9 +1,18 @@
+import { BaseSection } from '../../sections/base'
+import { Nav } from '../nav/nav'
+
 export class SnapNav extends HTMLBodyElement {
   navs = document.querySelectorAll('nav')
 
   constructor() {
     super()
+
     customElements.whenDefined('web-seek').then(() => {
+      const nav = this.querySelector<Nav>('[is="web-nav"]')
+
+      const sections = this.querySelectorAll<BaseSection>('section')
+      sections.forEach((section) => nav.addSection(section))
+
       this.navs = document.querySelectorAll('nav')
       this.navs.forEach((nav) => {
         const links = nav.querySelectorAll('a')
@@ -13,9 +22,7 @@ export class SnapNav extends HTMLBodyElement {
   }
 
   onClick(target: HTMLAnchorElement) {
-    target.addEventListener('click', (evt) => {
-      this.navTo(evt.target as HTMLAnchorElement)
-    })
+    target.addEventListener('click', () => this.navTo(target))
   }
 
   navTo = ({ dataset }: HTMLAnchorElement) => {
