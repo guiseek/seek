@@ -44,8 +44,6 @@ module.exports = {
     'web-recorder',
     'node-server',
     'node-client',
-    'peer-signaling',
-    'peer-core',
     'peer-client',
   ],
 

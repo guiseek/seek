@@ -44,6 +44,6 @@ export abstract class WebElement extends HTMLElement {
 }
 
 //
-export function webSeekElements(): string {
-  return 'web-seek-elements'
+export function webElements(): string {
+  return 'web-elements'
 }

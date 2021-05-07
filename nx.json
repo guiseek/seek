@@ -1,40 +1,73 @@
 {
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": { "defaultBase": "main" },
+  "affected": {
+    "defaultBase": "main"
+  },
   "npmScope": "seek-peer",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
     }
   },
   "projects": {
-    "peer-core": { "tags": [] },
-    "peer-signaling": { "tags": ["side:server", "type:feature", "scope:peer"] },
-    "web-profile": { "tags": ["type:web"] },
-    "web-core": { "tags": [] },
-    "seek-client": { "tags": ["type:app"] },
-    "web-router": { "tags": [] },
-    "web-recorder": { "tags": [] },
-    "util-encoder": { "tags": [] },
-    "web-transfer": { "tags": [] },
-    "web-phone": { "tags": [] },
-    "node-server": { "tags": [] },
-    "node-client": { "tags": [] },
-    "web-seek-elements": { "tags": [] },
-    "tool-release": { "tags": [] },
+    "web-profile": {
+      "tags": ["type:web"]
+    },
+    "web-core": {
+      "tags": []
+    },
+    "seek-client": {
+      "tags": ["type:app"]
+    },
+    "web-router": {
+      "tags": []
+    },
+    "web-recorder": {
+      "tags": []
+    },
+    "util-encoder": {
+      "tags": []
+    },
+    "web-transfer": {
+      "tags": []
+    },
+    "web-phone": {
+      "tags": []
+    },
+    "node-server": {
+      "tags": []
+    },
+    "node-client": {
+      "tags": []
+    },
+    "tool-release": {
+      "tags": []
+    },
     "tool-release-e2e": {
       "tags": [],
       "implicitDependencies": ["tool-release"]
     },
-    "web-common": { "tags": [] },
-    "web-seek": { "tags": [] }
+    "web-common": {
+      "tags": []
+    },
+    "web-seek": {
+      "tags": []
+    },
+    "web-elements": {
+      "tags": []
+    }
   }
 }
