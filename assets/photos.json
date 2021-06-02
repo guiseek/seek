@@ -149,7 +149,7 @@
     "width": 810,
     "height": 1440,
     "size": "normal",
-    "position": "none"
+    "position": "top"
   },
   {
     "src": "assets/photos/photo-9.webp",
@@ -189,7 +189,7 @@
     "width": 1440,
     "height": 1080,
     "size": "normal",
-    "position": "none"
+    "position": "top"
   },
   {
     "src": "assets/photos/photo-15.webp",
@@ -397,7 +397,7 @@
     "title": "Always bet on JS",
     "width": 1164,
     "height": 655,
-    "size": "normal",
+    "size": "small",
     "position": "none"
   },
   {
@@ -406,7 +406,7 @@
     "width": 655,
     "height": 1164,
     "size": "normal",
-    "position": "none"
+    "position": "top"
   },
   {
     "src": "assets/photos/photo-57.webp",
@@ -565,7 +565,7 @@
     "title": "Respeitadíssimo Douglas Crockford, arquiteto Yahoo que colocou o JSON no mundo.",
     "width": 2048,
     "height": 1536,
-    "size": "normal",
+    "size": "large",
     "position": "top"
   },
   {
@@ -685,8 +685,8 @@
     "title": "Rock and roll",
     "width": 2048,
     "height": 1365,
-    "size": "normal",
-    "position": "none"
+    "size": "small",
+    "position": "right"
   },
   {
     "src": "assets/photos/photo-88.webp",
@@ -709,7 +709,7 @@
     "title": "Conferência de Desenvolvedores do Paraná em 2017",
     "width": 1480,
     "height": 987,
-    "size": "normal",
+    "size": "medium",
     "position": "none"
   },
   {
