@@ -21,7 +21,7 @@ declare global {
         <span
           is="txt-rotate"
           period="1000"
-          rotate='[  "my profile", "web components", "custom elements", "pure native tecnology", "pretty", "fun!" ]'
+          rotate='[  "my profile", "web components", "custom elements", "pure native technology", "pretty", "fun!" ]'
         ></span>
       </h2>
     </header>
